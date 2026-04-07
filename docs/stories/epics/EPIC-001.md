@@ -15,7 +15,7 @@ Criar uma página web estática para organizar e persistir anotações de estudo
 | 001.2 | Seção de Citações Selecionadas | Done | @dev |
 | 001.3 | Persistência com LocalStorage | Done | @dev |
 | 001.4 | Visibilidade da seção Minhas Anotações | Done | @dev |
-| 001.5 | Quiz sobre Globalização | InReview | @dev |
+| 001.5 | Quiz sobre Globalização | Done | @dev |
 | 001.6 | Análise Crítica: Ianni e a Globalização | Done | @dev |
 | 001.7 | Integração Teórica: Ianni & Ghiraldelli | Done | @dev |
 | 001.8 | Conto Filosófico — O Crime do Silêncio | Done | @dev |
