@@ -19,6 +19,7 @@ Criar uma página web estática para organizar e persistir anotações de estudo
 | 001.6 | Análise Crítica: Ianni e a Globalização | Done | @dev |
 | 001.7 | Integração Teórica: Ianni & Ghiraldelli | Done | @dev |
 | 001.8 | Conto Filosófico — O Crime do Silêncio | Done | @dev |
+| 001.9 | Interatividade: Questões Provocativas (Acordeão) | InReview | @dev |
 
 ## Context
 Projeto de estudo do Cohort 8, aula 26/03/26. Objetivo é ter uma página de referência rápida sobre Ianni com notas persistidas localmente no browser.
