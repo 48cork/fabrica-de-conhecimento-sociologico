@@ -2,14 +2,14 @@ version: "1.0"
 bootstrapped: "2026-04-07"
 
 project:
-  name: cohort-8-ianni-notes
-  description: "Página de estudos sobre Octavio Ianni com quiz interativo — Cohort 8 Sociologia"
+  name: fabrica-de-conhecimento-sociologico
+  description: "Plataforma de estudos de Sociologia — notas, quiz e recursos sobre globalização e pensamento social — Cohort 8"
 
 github:
   username: 48cork
-  repo: cohort-8-ianni-notes
+  repo: fabrica-de-conhecimento-sociologico
   visibility: private
-  url: https://github.com/48cork/cohort-8-ianni-notes
+  url: https://github.com/48cork/fabrica-de-conhecimento-sociologico
 
 stack:
   - name: HTML5
