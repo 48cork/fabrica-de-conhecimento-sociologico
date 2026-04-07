@@ -97,6 +97,14 @@ entities:
     status: active
     stories: [001.1, 001.2, 001.3, 001.4, 001.5, 001.6, 001.7, 001.8]
 
+  - id: EPIC-002
+    name: Expansão Teórica — Diálogos com a Sociologia Contemporânea
+    type: epic
+    path: docs/stories/epics/EPIC-002.md
+    owner: "@pm"
+    status: active
+    stories: [002.1]
+
 project:
   name: fabrica-de-conhecimento-sociologico
   github: 48cork/fabrica-de-conhecimento-sociologico
