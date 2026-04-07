@@ -1,0 +1,48 @@
+version: "1.0"
+project: cohort-8aula260326
+
+agents:
+  dev:       { name: Dex,   role: Implementation }
+  qa:        { name: QA,    role: Quality Gate }
+  architect: { name: Aria,  role: Design Authority }
+  data-engineer: { name: Dara, role: Database }
+  devops:    { name: Gage,  role: Git/CI/CD }
+  pm:        { name: Morgan, role: Epic Orchestration }
+  po:        { name: Pax,   role: Story Validation }
+  sm:        { name: River, role: Story Creation }
+  analyst:   { name: Analyst, role: Research }
+  aiox-master: { name: Master, role: Framework Governance }
+
+workflows:
+  primary: story-development-cycle
+  available:
+    - story-development-cycle
+    - qa-loop
+    - spec-pipeline
+
+story_lifecycle:
+  statuses: [Draft, Ready, InProgress, InReview, Done]
+
+coderabbit_integration:
+  dev_phase:
+    mode: light
+    max_iterations: 2
+    severity_filter: [CRITICAL, HIGH]
+  qa_phase:
+    mode: full
+    max_iterations: 3
+    severity_filter: [CRITICAL, HIGH]
+  reports_dir: docs/qa/coderabbit-reports/
+
+qa_loop:
+  max_iterations: 5
+  status_file: qa/loop-status.json
+
+paths:
+  epics: docs/stories/epics/
+  stories: docs/stories/
+  specs: docs/specs/
+  qa_reports: docs/qa/coderabbit-reports/
+  tasks: .aiox-core/development/tasks/
+  workflows: .aiox-core/development/workflows/
+  agents: .aiox-core/development/agents/

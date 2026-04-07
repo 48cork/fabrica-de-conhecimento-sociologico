@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(explorer.exe:*)",
+      "Bash(powershell.exe:*)",
+      "Bash(chmod +x:*)"
+    ]
+  }
+}

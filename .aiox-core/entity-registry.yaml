@@ -1,0 +1,98 @@
+version: "1.0"
+description: "IDS Entity Registry — tracks all artifacts to enforce REUSE > ADAPT > CREATE"
+last_updated: "2026-04-07"
+
+entities:
+
+  # Tasks
+  - id: TASK-001
+    name: create-next-story
+    type: task
+    path: .aiox-core/development/tasks/create-next-story.md
+    owner: "@sm"
+    status: active
+    adaptability: 0.8
+    used_by: [workflow-sdc]
+
+  - id: TASK-002
+    name: validate-next-story
+    type: task
+    path: .aiox-core/development/tasks/validate-next-story.md
+    owner: "@po"
+    status: active
+    adaptability: 0.7
+    used_by: [workflow-sdc]
+
+  - id: TASK-003
+    name: dev-develop-story
+    type: task
+    path: .aiox-core/development/tasks/dev-develop-story.md
+    owner: "@dev"
+    status: active
+    adaptability: 0.8
+    used_by: [workflow-sdc]
+
+  - id: TASK-004
+    name: qa-gate
+    type: task
+    path: .aiox-core/development/tasks/qa-gate.md
+    owner: "@qa"
+    status: active
+    adaptability: 0.7
+    used_by: [workflow-sdc, workflow-qa-loop]
+
+  # Workflows
+  - id: WF-001
+    name: story-development-cycle
+    type: workflow
+    path: .aiox-core/development/workflows/story-development-cycle.md
+    owner: "@aiox-master"
+    status: active
+    adaptability: 0.6
+    used_by: []
+
+  - id: WF-002
+    name: qa-loop
+    type: workflow
+    path: .aiox-core/development/workflows/qa-loop.md
+    owner: "@qa"
+    status: active
+    adaptability: 0.7
+    used_by: []
+
+  - id: WF-003
+    name: spec-pipeline
+    type: workflow
+    path: .aiox-core/development/workflows/spec-pipeline.md
+    owner: "@pm"
+    status: active
+    adaptability: 0.7
+    used_by: []
+
+  # Templates
+  - id: TPL-001
+    name: STORY-TEMPLATE
+    type: template
+    path: docs/stories/STORY-TEMPLATE.md
+    owner: "@sm"
+    status: active
+    adaptability: 0.9
+    used_by: []
+
+  - id: TPL-002
+    name: EPIC-TEMPLATE
+    type: template
+    path: docs/stories/epics/EPIC-TEMPLATE.md
+    owner: "@pm"
+    status: active
+    adaptability: 0.9
+    used_by: [EPIC-001]
+
+  # Epics
+  - id: EPIC-001
+    name: Notas sobre Octavio Ianni
+    type: epic
+    path: docs/stories/epics/EPIC-001.md
+    owner: "@pm"
+    status: active
+    stories: [001.1, 001.2, 001.3, 001.4, 001.5]

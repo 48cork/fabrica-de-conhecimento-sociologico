@@ -1,0 +1,28 @@
+version: "1.0"
+bootstrapped: "2026-04-07"
+
+project:
+  name: cohort-8-ianni-notes
+  description: "Página de estudos sobre Octavio Ianni com quiz interativo — Cohort 8 Sociologia"
+
+github:
+  username: 48cork
+  repo: cohort-8-ianni-notes
+  visibility: private
+  url: https://github.com/48cork/cohort-8-ianni-notes
+
+stack:
+  - name: HTML5
+    role: Estrutura da página
+  - name: Tailwind CSS
+    role: Estilização via CDN
+  - name: JavaScript Vanilla
+    role: LocalStorage, Quiz interativo
+  - name: Node.js / npm
+    role: Tooling local
+
+devops:
+  agent: Gage (@devops)
+  git_push: exclusive
+  pr_create: exclusive
+  ci_cd: github-actions
