@@ -97,6 +97,14 @@ entities:
     status: active
     stories: [001.1, 001.2, 001.3, 001.4, 001.5, 001.6, 001.7, 001.8]
 
+  - id: EPIC-004
+    name: Trabalho e Precarização — A Classe que Vive do Trabalho Digital
+    type: epic
+    path: docs/stories/epics/EPIC-004.md
+    owner: "@pm"
+    status: active
+    stories: [004.1]
+
   - id: EPIC-003
     name: Fundamentos — Os Pilares da Sociologia
     type: epic
