@@ -16,7 +16,7 @@ Criar uma página web estática para organizar e persistir anotações de estudo
 | 001.3 | Persistência com LocalStorage | Done | @dev |
 | 001.4 | Visibilidade da seção Minhas Anotações | Done | @dev |
 | 001.5 | Quiz sobre Globalização | Draft | @dev |
-| 001.6 | Análise Crítica: Ianni e a Globalização | InReview | @dev |
+| 001.6 | Análise Crítica: Ianni e a Globalização | Done | @dev |
 
 ## Context
 Projeto de estudo do Cohort 8, aula 26/03/26. Objetivo é ter uma página de referência rápida sobre Ianni com notas persistidas localmente no browser.
