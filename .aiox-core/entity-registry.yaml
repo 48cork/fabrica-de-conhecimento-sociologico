@@ -103,7 +103,7 @@ entities:
     path: docs/stories/epics/EPIC-003.md
     owner: "@pm"
     status: active
-    stories: [003.1]
+    stories: [003.1, 003.2]
 
   - id: EPIC-002
     name: Expansão Teórica — Diálogos com a Sociologia Contemporânea

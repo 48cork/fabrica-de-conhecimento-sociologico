@@ -109,6 +109,26 @@
 
       </div>
     </div>
+    <!-- Quiz de Fundamentos -->
+    <div class="border-t border-gray-700 bg-gray-800/60">
+      <div class="max-w-4xl mx-auto px-6 py-8">
+        <div class="flex items-center justify-between mb-1">
+          <h3 class="text-base font-semibold text-white">Quiz de Fundamentos</h3>
+          <span class="text-xs font-medium bg-gray-700 text-gray-300 px-2 py-0.5 rounded-full">7 questões</span>
+        </div>
+        <p class="text-xs text-gray-500 mb-6">Teste seus conhecimentos sobre os pilares clássicos e suas conexões com o mundo digital.</p>
+
+        <div id="quiz-fundamentos-container"></div>
+
+        <div id="quiz-fundamentos-result" class="hidden mt-6 p-5 rounded-xl bg-gray-700 border border-gray-600 text-center">
+          <p class="text-xs text-gray-400 uppercase tracking-wide mb-1">Pontuação — Fundamentos</p>
+          <p id="fund-score-display" class="text-4xl font-bold text-white mb-1"></p>
+          <p id="fund-last-score" class="text-xs text-gray-500 mb-4"></p>
+          <button id="fund-restart" class="px-5 py-2 bg-white text-gray-900 text-sm font-medium rounded-lg hover:bg-gray-100 transition-colors">Reiniciar Quiz</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <main class="max-w-4xl mx-auto px-6 py-8 space-y-6">
@@ -631,6 +651,168 @@
   <footer class="text-center text-xs text-gray-400 py-6">
     Cohort 8 · Aula 26/03/26
   </footer>
+
+  <script>
+    // Quiz de Fundamentos — Marx, Durkheim, Weber
+    const FUND_KEY = 'sociologia_fundamentos_quiz';
+
+    const fundQuestions = [
+      {
+        q: 'O que Marx entendia por "alienação" do trabalhador?',
+        options: [
+          'O sentimento de tristeza causado pelo trabalho repetitivo',
+          'A separação do trabalhador do produto de seu trabalho e do próprio processo criativo',
+          'A incapacidade do trabalhador de se adaptar às novas tecnologias',
+          'O distanciamento geográfico entre trabalhador e patrão'
+        ],
+        correct: 1,
+        explanation: 'Para Marx, alienação é a separação estrutural do trabalhador do produto, do processo produtivo, dos outros trabalhadores e de si mesmo — não apenas um sentimento, mas uma condição objetiva do capitalismo.'
+      },
+      {
+        q: 'Como a extração de dados pelas plataformas digitais se relaciona com o conceito de mais-valia de Marx?',
+        options: [
+          'Não se relaciona — Marx não analisou o trabalho imaterial',
+          'O usuário trabalha (produz dados/atenção) sem ser remunerado; a plataforma apropria esse excedente como receita publicitária',
+          'A mais-valia digital é paga ao usuário na forma de serviços gratuitos',
+          'Marx previu o capitalismo digital em O Capital'
+        ],
+        correct: 1,
+        explanation: 'O usuário cria valor (dados, comportamento, atenção) sem remuneração. A plataforma transforma esse excedente em receita — estrutura análoga à mais-valia: trabalho não pago apropriado pelo capital.'
+      },
+      {
+        q: 'O conceito de "anomia" de Durkheim descreve:',
+        options: [
+          'O excesso de normas que oprime o indivíduo na sociedade moderna',
+          'A dissolução dos laços normativos que orientam o comportamento — desorientação social',
+          'A resistência cultural de grupos minoritários às normas dominantes',
+          'A divisão do trabalho que gera solidariedade orgânica'
+        ],
+        correct: 1,
+        explanation: 'Anomia é a condição de ausência ou enfraquecimento das normas sociais — o indivíduo perde os referenciais que dão sentido à ação. Durkheim a associou ao aumento do suicídio nas sociedades modernas industriais.'
+      },
+      {
+        q: 'Segundo a perspectiva durkheimiana, o que as redes sociais digitais reproduzem paradoxalmente?',
+        options: [
+          'Solidariedade mecânica — igualdade entre usuários num espaço comum',
+          'Coesão social genuína — laços fortes mediados pela tecnologia',
+          'Anomia estrutural — conexão sem compromisso, pertencimento sem solidariedade real',
+          'Divisão do trabalho orgânica — especialização das comunidades digitais'
+        ],
+        correct: 2,
+        explanation: 'Durkheim reconheceria nas plataformas uma anomia digital: a aparência de coesão (likes, seguidores) mascara a ausência de laços solidários reais. Bauman chama isso de "conexão vs. compromisso".'
+      },
+      {
+        q: 'O que Weber chamou de "jaula de ferro" (Gehäuse der Hörigkeit)?',
+        options: [
+          'As prisões criadas pelo Estado moderno para controlar a classe operária',
+          'O aprisionamento do indivíduo pela lógica da racionalidade formal — burocracia, cálculo e eficiência como fins em si',
+          'A dependência do capitalismo em relação à religião protestante',
+          'A concentração de poder nas mãos da burguesia industrial'
+        ],
+        correct: 1,
+        explanation: 'A "jaula de ferro" webberiana é a condição em que a racionalidade instrumental — criada para servir fins humanos — passa a dominar o próprio humano. A burocracia torna-se um fim em si, aprisionando a liberdade.'
+      },
+      {
+        q: 'Como o conceito weberiano de racionalização se manifesta nos algoritmos de plataforma?',
+        options: [
+          'Não se manifesta — Weber analisava apenas a burocracia estatal',
+          'O algoritmo é a racionalização weberiana radicalizada: tudo é otimizado, ranqueado e calculado — a jaula de ferro sem burocratas visíveis',
+          'Os algoritmos representam o oposto da racionalização — são criativos e imprevisíveis',
+          'Weber antecipou os algoritmos no conceito de dominação carismática'
+        ],
+        correct: 1,
+        explanation: 'O algoritmo é Weber atualizado: racionalidade formal pura, sem agente humano visível. A Tecnopolítica de Ghiraldelli é o ponto de chegada da racionalização weberiana — a jaula de ferro tornou-se código.'
+      },
+      {
+        q: 'Qual a conexão entre os três pilares (Marx, Durkheim, Weber) e a análise de Ianni sobre a globalização?',
+        options: [
+          'Os três pilares rejeitaram o capitalismo global — Ianni os atualiza',
+          'Marx fornece a crítica do capital, Durkheim a dissolução dos laços, Weber a racionalização — Ianni mostra como os três processos se globalizam simultaneamente na mundialização do capital',
+          'Ianni substitui os três pilares por uma teoria original sem precedentes',
+          'Apenas Marx influenciou Ianni — Durkheim e Weber são liberais'
+        ],
+        correct: 1,
+        explanation: 'A mundialização do capital (Ianni) é simultaneamente: exploração globalizada (Marx), dissolução dos laços nacionais (Durkheim) e racionalização sem fronteiras (Weber). Os três pilares convergem no diagnóstico da globalização.'
+      }
+    ];
+
+    let fundAnswered = [];
+    let fundScore = 0;
+
+    function renderFundamentosQuiz() {
+      const container = document.getElementById('quiz-fundamentos-container');
+      container.innerHTML = '';
+      fundAnswered = new Array(fundQuestions.length).fill(null);
+      fundScore = 0;
+      document.getElementById('quiz-fundamentos-result').classList.add('hidden');
+
+      fundQuestions.forEach((q, idx) => {
+        const div = document.createElement('div');
+        div.className = 'mb-5 pb-5 border-b border-gray-700 last:border-0 last:mb-0 last:pb-0';
+        div.innerHTML = `
+          <p class="text-sm font-medium text-gray-200 mb-3">
+            <span class="text-indigo-400 font-bold">${idx + 1}.</span> ${q.q}
+          </p>
+          <div class="space-y-2">
+            ${q.options.map((opt, i) => `
+              <button
+                onclick="fundAnswer(${idx}, ${i})"
+                id="fund-opt-${idx}-${i}"
+                class="w-full text-left text-xs px-3 py-2 rounded-lg border border-gray-600 bg-gray-700/50 hover:bg-gray-600 hover:border-gray-500 transition-colors text-gray-300"
+              >${opt}</button>
+            `).join('')}
+          </div>
+          <p id="fund-feedback-${idx}" class="hidden mt-3 text-xs leading-relaxed px-3 py-2 rounded-lg"></p>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function fundAnswer(qIdx, optIdx) {
+      if (fundAnswered[qIdx] !== null) return;
+      fundAnswered[qIdx] = optIdx;
+
+      const q = fundQuestions[qIdx];
+      const isCorrect = optIdx === q.correct;
+      if (isCorrect) fundScore++;
+
+      q.options.forEach((_, i) => {
+        const btn = document.getElementById(`fund-opt-${qIdx}-${i}`);
+        btn.disabled = true;
+        btn.classList.remove('hover:bg-gray-600', 'hover:border-gray-500');
+        if (i === q.correct) {
+          btn.classList.add('bg-green-900/60', 'border-green-600', 'text-green-300', 'font-medium');
+        } else if (i === optIdx && !isCorrect) {
+          btn.classList.add('bg-red-900/60', 'border-red-700', 'text-red-400');
+        }
+      });
+
+      const feedback = document.getElementById(`fund-feedback-${qIdx}`);
+      feedback.classList.remove('hidden');
+      feedback.className = `mt-3 text-xs leading-relaxed px-3 py-2 rounded-lg ${isCorrect ? 'bg-green-900/40 text-green-300' : 'bg-red-900/40 text-red-300'}`;
+      feedback.innerHTML = `<strong>${isCorrect ? '✓ Correto!' : '✗ Incorreto.'}</strong> ${q.explanation}`;
+
+      if (fundAnswered.every(a => a !== null)) showFundResult();
+    }
+
+    function showFundResult() {
+      const total = fundQuestions.length;
+      const pct = Math.round((fundScore / total) * 100);
+      const last = localStorage.getItem(FUND_KEY);
+
+      document.getElementById('fund-score-display').textContent = `${fundScore} / ${total} (${pct}%)`;
+      document.getElementById('fund-last-score').textContent = last
+        ? `Última tentativa: ${last}`
+        : 'Primeira tentativa!';
+
+      localStorage.setItem(FUND_KEY, `${fundScore}/${total} — ${new Date().toLocaleDateString('pt-BR')}`);
+      document.getElementById('quiz-fundamentos-result').classList.remove('hidden');
+      document.getElementById('quiz-fundamentos-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    document.getElementById('fund-restart').addEventListener('click', renderFundamentosQuiz);
+    renderFundamentosQuiz();
+  </script>
 
   <script>
     // Pilares — cards independentes (múltiplos abertos simultaneamente)

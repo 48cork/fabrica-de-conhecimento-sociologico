@@ -14,6 +14,7 @@ e ao capitalismo contemporâneo — criando um ponto de entrada visual e conceit
 | Story | Title | Status | Agent |
 |-------|-------|--------|-------|
 | 003.1 | Os Pilares: Marx, Durkheim e Weber (Hero) | Done | @dev |
+| 003.2 | Quiz de Fundamentos — Marx, Durkheim e Weber | Done | @dev |
 
 ## Change Log
 | Date | Agent | Change |
