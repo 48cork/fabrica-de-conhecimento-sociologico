@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fábrica de Conhecimento Sociológico — UFCG</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    /* ── Supabase placeholders ── substituir antes do deploy */
+    :root {
+      --supabase-url: 'YOUR_SUPABASE_URL';
+      --supabase-anon-key: 'YOUR_SUPABASE_ANON_KEY';
+    }
+
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+    @keyframes fade-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+    .animate-blink { animation: blink 1.4s ease-in-out infinite; }
+    .fade-up { animation: fade-up 0.6s ease both; }
+    .fade-up-1 { animation-delay: 0.1s; }
+    .fade-up-2 { animation-delay: 0.2s; }
+    .fade-up-3 { animation-delay: 0.3s; }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .glass-input {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .glass-input:focus {
+      outline: none;
+      border-color: rgba(99, 102, 241, 0.7);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      box-shadow: 0 4px 24px rgba(99, 102, 241, 0.35);
+      transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+    }
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.5);
+    }
+    .btn-primary:active:not(:disabled) { transform: translateY(0); }
+    .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    body { background: #0a0a14; }
+  </style>
+</head>
+<body class="text-white min-h-screen font-sans antialiased">
+
+  <!-- Background grid -->
+  <div class="fixed inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(99,102,241,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.03) 1px, transparent 1px); background-size: 48px 48px;"></div>
+
+  <!-- Glow orbs -->
+  <div class="fixed top-0 left-1/4 w-96 h-96 rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);"></div>
+  <div class="fixed bottom-0 right-1/4 w-96 h-96 rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(34,197,94,0.08) 0%, transparent 70%);"></div>
+
+  <div class="relative z-10 max-w-3xl mx-auto px-6 py-16 space-y-20">
+
+    <!-- ── HERO ── -->
+    <section class="text-center space-y-6 fade-up fade-up-1">
+      <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-[10px] font-mono text-indigo-400 uppercase tracking-widest mb-4">
+        <span class="h-1.5 w-1.5 rounded-full bg-green-400 animate-blink inline-block"></span>
+        Motor AIOX v2.0 · UFCG · Sertão Paraibano
+      </div>
+
+      <h1 class="text-3xl md:text-5xl font-black tracking-tight leading-tight">
+        A Sociologia já estava no seu celular<br/>
+        <span class="text-transparent bg-clip-text" style="background-image: linear-gradient(135deg, #6366f1, #a5b4fc);">antes de você entrar na UFCG.</span>
+      </h1>
+
+      <p class="text-gray-400 text-lg max-w-xl mx-auto leading-relaxed">
+        Você só não sabia o nome do que estava vivendo.
+      </p>
+    </section>
+
+    <!-- ── PROBLEMA ── -->
+    <section class="space-y-6 fade-up fade-up-2">
+      <div class="flex items-center gap-3">
+        <div class="h-px flex-1 bg-white/10"></div>
+        <span class="text-[10px] font-mono text-white/40 uppercase tracking-widest">01 · Problema</span>
+        <div class="h-px flex-1 bg-white/10"></div>
+      </div>
+
+      <p class="text-center text-white/60 text-sm">Você se identifica com alguma dessas?</p>
+
+      <div class="grid gap-3">
+        <!-- Dor 1 -->
+        <div class="glass rounded-xl p-4 flex gap-4 items-start">
+          <span class="text-indigo-400 font-mono font-bold text-sm shrink-0 mt-0.5">01</span>
+          <div>
+            <p class="font-bold text-white text-sm">"Os textos são impossíveis."</p>
+            <p class="text-gray-400 text-sm mt-1">Você abre o PDF da ementa e parece outro idioma. Durkheim, Marx, Weber — nomes que não dizem nada ainda, mas que vão cair na prova.</p>
+          </div>
+        </div>
+        <!-- Dor 2 -->
+        <div class="glass rounded-xl p-4 flex gap-4 items-start">
+          <span class="text-indigo-400 font-mono font-bold text-sm shrink-0 mt-0.5">02</span>
+          <div>
+            <p class="font-bold text-white text-sm">"Não vejo relação com a minha vida."</p>
+            <p class="text-gray-400 text-sm mt-1">O professor fala de revolução industrial, você pensa no iFood. Ninguém fez essa ponte ainda.</p>
+          </div>
+        </div>
+        <!-- Dor 3 -->
+        <div class="glass rounded-xl p-4 flex gap-4 items-start">
+          <span class="text-indigo-400 font-mono font-bold text-sm shrink-0 mt-0.5">03</span>
+          <div>
+            <p class="font-bold text-white text-sm">"Cheguei do interior e me sinto perdido aqui."</p>
+            <p class="text-gray-400 text-sm mt-1">A universidade tem um ritmo que ninguém te ensinou. A biblioteca, o sistema, os professores — tudo parece feito pra quem já sabia.</p>
+          </div>
+        </div>
+        <!-- Dor 4 -->
+        <div class="glass rounded-xl p-4 flex gap-4 items-start">
+          <span class="text-indigo-400 font-mono font-bold text-sm shrink-0 mt-0.5">04</span>
+          <div>
+            <p class="font-bold text-white text-sm">"Trabalho pra pagar o curso e mal tenho tempo de estudar."</p>
+            <p class="text-gray-400 text-sm mt-1">Entre o bico, a condução e a família, o tempo de estudo é o que sobra — e quase nunca sobra nada.</p>
+          </div>
+        </div>
+        <!-- Dor 5 -->
+        <div class="glass rounded-xl p-4 flex gap-4 items-start">
+          <span class="text-indigo-400 font-mono font-bold text-sm shrink-0 mt-0.5">05</span>
+          <div>
+            <p class="font-bold text-white text-sm">"Sinto que Sociologia é só teoria, não resolve nada."</p>
+            <p class="text-gray-400 text-sm mt-1">Você entrou com dúvida se valeu a pena. O curso parece distante do mercado, do território, da realidade do Sertão.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SOLUÇÃO ── -->
+    <section class="space-y-6 fade-up fade-up-3">
+      <div class="flex items-center gap-3">
+        <div class="h-px flex-1 bg-white/10"></div>
+        <span class="text-[10px] font-mono text-white/40 uppercase tracking-widest">02 · Solução</span>
+        <div class="h-px flex-1 bg-white/10"></div>
+      </div>
+
+      <div class="glass rounded-2xl p-6 space-y-2 text-center">
+        <p class="text-[10px] font-mono text-indigo-400 uppercase tracking-widest">Dashboard AIOX v2.0</p>
+        <h2 class="text-2xl font-black">A Fábrica de Conhecimento Sociológico.</h2>
+        <p class="text-gray-400 text-sm">Teoria como ferramenta — não para passar na prova, mas para entender o Sertão, o algoritmo e o mercado de trabalho.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-3">
+        <!-- Benefício 1 -->
+        <div class="glass rounded-xl p-5 space-y-2">
+          <div class="flex items-center gap-2">
+            <span class="h-2 w-2 rounded-full bg-blue-400 shrink-0"></span>
+            <p class="font-bold text-sm">Teoria traduzida para o seu território</p>
+          </div>
+          <p class="text-gray-400 text-sm pl-4">Os clássicos lidos a partir do Sertão Paraibano — com exemplos reais de Campina Grande, Patos e do interior.</p>
+        </div>
+        <!-- Benefício 2 -->
+        <div class="glass rounded-xl p-5 space-y-2">
+          <div class="flex items-center gap-2">
+            <span class="h-2 w-2 rounded-full bg-green-400 shrink-0"></span>
+            <p class="font-bold text-sm">Análises do presente que você já vive</p>
+          </div>
+          <p class="text-gray-400 text-sm pl-4">Uberização, plataformas digitais, exclusão digital — tratados como temas sociológicos, não como novidade de TED Talk.</p>
+        </div>
+        <!-- Benefício 3 -->
+        <div class="glass rounded-xl p-5 space-y-2">
+          <div class="flex items-center gap-2">
+            <span class="h-2 w-2 rounded-full bg-indigo-400 shrink-0"></span>
+            <p class="font-bold text-sm">Ferramentas para pensar, não decorar</p>
+          </div>
+          <p class="text-gray-400 text-sm pl-4">O Dashboard entrega perguntas que mudam a forma como você lê a realidade. A teoria vira instrumento, não obstáculo.</p>
+        </div>
+        <!-- Benefício 4 -->
+        <div class="glass rounded-xl p-5 space-y-2">
+          <div class="flex items-center gap-2">
+            <span class="h-2 w-2 rounded-full bg-purple-400 shrink-0"></span>
+            <p class="font-bold text-sm">Acesso contínuo aos materiais</p>
+          </div>
+          <p class="text-gray-400 text-sm pl-4">Insights e sínteses dos autores disponíveis sempre — mesmo com dados limitados, mesmo fora do horário de aula.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROVA SOCIAL ── -->
+    <section class="space-y-6">
+      <div class="flex items-center gap-3">
+        <div class="h-px flex-1 bg-white/10"></div>
+        <span class="text-[10px] font-mono text-white/40 uppercase tracking-widest">03 · Quem já está dentro</span>
+        <div class="h-px flex-1 bg-white/10"></div>
+      </div>
+
+      <div class="grid gap-4">
+        <!-- Depoimento 1 -->
+        <div class="glass rounded-xl p-5 space-y-3">
+          <p class="text-gray-300 text-sm leading-relaxed italic">"Eu achava que Sociologia era coisa de quem mora em cidade grande. Aí o professor mostrou que o que acontece comigo no aplicativo de entrega tem nome: uberização. Mudou tudo."</p>
+          <div class="flex items-center gap-2 pt-1 border-t border-white/10">
+            <div class="h-7 w-7 rounded-full bg-indigo-900 flex items-center justify-center text-[10px] font-bold text-indigo-300">K</div>
+            <div>
+              <p class="text-xs font-bold">Kaique</p>
+              <p class="text-[10px] text-gray-500">19 anos · Patos-PB · 1º período</p>
+            </div>
+          </div>
+        </div>
+        <!-- Depoimento 2 -->
+        <div class="glass rounded-xl p-5 space-y-3">
+          <p class="text-gray-300 text-sm leading-relaxed italic">"Cheguei na UFCG sem entender nada de teoria. O Dashboard me mostrou que Marx estava falando do motoboy da minha rua. Agora consigo ler os textos sem travar."</p>
+          <div class="flex items-center gap-2 pt-1 border-t border-white/10">
+            <div class="h-7 w-7 rounded-full bg-green-900 flex items-center justify-center text-[10px] font-bold text-green-300">I</div>
+            <div>
+              <p class="text-xs font-bold">Isabela</p>
+              <p class="text-[10px] text-gray-500">20 anos · Sousa-PB · 1º período</p>
+            </div>
+          </div>
+        </div>
+        <!-- Depoimento 3 -->
+        <div class="glass rounded-xl p-5 space-y-3">
+          <p class="text-gray-300 text-sm leading-relaxed italic">"O que mais me ajudou foi ver que o Sertão não está fora do capitalismo — ele está dentro, pela porta dos fundos. Isso eu aprendi aqui antes de aprender em qualquer livro."</p>
+          <div class="flex items-center gap-2 pt-1 border-t border-white/10">
+            <div class="h-7 w-7 rounded-full bg-purple-900 flex items-center justify-center text-[10px] font-bold text-purple-300">T</div>
+            <div>
+              <p class="text-xs font-bold">Tarcísio</p>
+              <p class="text-[10px] text-gray-500">21 anos · Cajazeiras-PB · 2º período</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-[10px] text-white/20 italic">Depoimentos ilustrativos — a serem substituídos por reais após o curso.</p>
+    </section>
+
+    <!-- ── FORMULÁRIO ── -->
+    <section class="space-y-6" id="form-section">
+      <div class="flex items-center gap-3">
+        <div class="h-px flex-1 bg-white/10"></div>
+        <span class="text-[10px] font-mono text-white/40 uppercase tracking-widest">04 · Entre na Fábrica</span>
+        <div class="h-px flex-1 bg-white/10"></div>
+      </div>
+
+      <div class="glass rounded-2xl p-8 space-y-6 max-w-md mx-auto">
+        <div class="text-center space-y-1">
+          <h3 class="text-xl font-black">Entre na Fábrica.</h3>
+          <p class="text-gray-400 text-sm">Acesse os materiais, análises e atualizações do curso.</p>
+        </div>
+
+        <form id="lead-form" class="space-y-4" novalidate>
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-mono text-white/50 uppercase tracking-widest" for="nome">Nome completo</label>
+            <input
+              id="nome"
+              type="text"
+              placeholder="Seu nome"
+              required
+              class="glass-input w-full rounded-lg px-4 py-3 text-sm text-white placeholder-white/20 font-sans"
+            />
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-mono text-white/50 uppercase tracking-widest" for="email">E-mail institucional</label>
+            <input
+              id="email"
+              type="email"
+              placeholder="seu@ufcg.edu.br"
+              required
+              class="glass-input w-full rounded-lg px-4 py-3 text-sm text-white placeholder-white/20 font-mono"
+            />
+            <p class="text-[10px] text-white/30">Aceito: @ufcg.edu.br ou @estudante.ufcg.edu.br</p>
+          </div>
+
+          <!-- Feedback -->
+          <div id="form-feedback" class="hidden text-sm text-center py-2 px-4 rounded-lg font-mono"></div>
+
+          <button
+            type="submit"
+            id="submit-btn"
+            class="btn-primary w-full py-3 rounded-lg font-black text-sm uppercase tracking-widest text-white"
+          >
+            ENTRAR NA FÁBRICA →
+          </button>
+
+          <p class="text-center text-[10px] text-white/25 italic">Seus dados ficam só aqui. Sem spam. Sem lista de terceiros.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ── RODAPÉ ── -->
+    <footer class="text-center space-y-2 pt-8 border-t border-white/5">
+      <p class="text-xs font-bold text-white/60">Fábrica de Conhecimento Sociológico</p>
+      <p class="text-[10px] text-white/30">UFCG · Introdução à Sociologia · Fundamentos do Pensamento Sociológico</p>
+      <p class="text-[10px] font-mono text-indigo-900">Motor analítico: AIOX v2.0</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // ── Supabase config (substituir placeholders antes do deploy) ──
+    const SUPABASE_URL = 'YOUR_SUPABASE_URL'
+    const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY'
+
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+
+    const form = document.getElementById('lead-form')
+    const btn = document.getElementById('submit-btn')
+    const feedback = document.getElementById('form-feedback')
+
+    function showFeedback(message, type) {
+      feedback.textContent = message
+      feedback.className = `text-sm text-center py-2 px-4 rounded-lg font-mono ${
+        type === 'success'
+          ? 'bg-green-900/40 text-green-400 border border-green-800'
+          : 'bg-red-900/40 text-red-400 border border-red-800'
+      }`
+      feedback.classList.remove('hidden')
+    }
+
+    function isValidEmail(email) {
+      return email.endsWith('@ufcg.edu.br') || email.endsWith('@estudante.ufcg.edu.br')
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      feedback.classList.add('hidden')
+
+      const nome = document.getElementById('nome').value.trim()
+      const email = document.getElementById('email').value.trim().toLowerCase()
+
+      if (!nome) {
+        showFeedback('Por favor, informe seu nome.', 'error')
+        return
+      }
+
+      if (!isValidEmail(email)) {
+        showFeedback('Use seu e-mail institucional (@ufcg.edu.br ou @estudante.ufcg.edu.br).', 'error')
+        return
+      }
+
+      btn.disabled = true
+      btn.textContent = 'PROCESSANDO...'
+
+      const { error } = await supabase.from('leads').insert([{ nome, email }])
+
+      if (error) {
+        if (error.code === '23505') {
+          showFeedback('Este e-mail já está cadastrado.', 'error')
+        } else {
+          showFeedback('Algo deu errado. Tente novamente.', 'error')
+        }
+        btn.disabled = false
+        btn.textContent = 'ENTRAR NA FÁBRICA →'
+        return
+      }
+
+      btn.textContent = 'CADASTRO REALIZADO ✓'
+      showFeedback('Cadastro realizado. Bem-vindo à Fábrica.', 'success')
+      form.reset()
+    })
+  </script>
+
+</body>
+</html>
