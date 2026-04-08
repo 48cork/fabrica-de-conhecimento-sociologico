@@ -3,7 +3,14 @@
     "allow": [
       "Bash(explorer.exe:*)",
       "Bash(powershell.exe:*)",
-      "Bash(chmod +x:*)"
+      "Bash(chmod +x:*)",
+      "Bash(git config:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(gh repo:*)",
+      "Bash(sudo apt:*)",
+      "Bash(grep -n \"<!-- Bauman\\\\|<!-- Conto\\\\|const questions\\\\|correct: 1,$\\\\|correct: 2,$\\\\|correct: 3,$\" /home/sergio_farias/projetos/cohort-8aula260326/index.html)",
+      "Bash(grep -n \"correct: 1,$\" /home/sergio_farias/projetos/cohort-8aula260326/index.html)"
     ]
   }
 }
