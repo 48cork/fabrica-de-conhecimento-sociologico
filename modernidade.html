@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+Google Fonts
+400: Invalid selector
+
+Expected ':' or end of request, familyName can only contain alphanumeric/space characters
+
+Lo>
+  ^
+For reference, see the Google Fonts API documentation.<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O Despertar para a Modernidade</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --ink: #1a1208;
+    --sepia: #8b6914;
+    --rust: #c0392b;
+    --muted: #6b5d4f;
+    --accent: #d4a843;
+    --light-sepia: #e8dcc8;
+    --paper: #faf7f2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Lora', serif;
+    line-height: 1.9;
+    font-size: 18px;
+    overflow-x: hidden;
+  }
+
+  /* Grain texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.5;
+  }
+
+  /* Header */
+  .header {
+    background-color: var(--ink);
+    color: var(--cream);
+    padding: 80px 40px 60px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255,255,255,0.015) 2px,
+      rgba(255,255,255,0.015) 4px
+    );
+  }
+
+  .header-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 6px;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+  }
+
+  .header h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .divider-header {
+    width: 80px;
+    height: 2px;
+    background: var(--accent);
+    margin: 24px auto;
+  }
+
+  .header-sub {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: rgba(245,240,232,0.6);
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+
+  /* Chapter intro */
+  .chapter-intro {
+    background: var(--light-sepia);
+    border-left: 4px solid var(--accent);
+    padding: 40px 48px;
+    max-width: 760px;
+    margin: 60px auto 0;
+    position: relative;
+  }
+
+  .chapter-intro::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    color: var(--accent);
+    opacity: 0.2;
+    position: absolute;
+    top: -20px;
+    left: 16px;
+    line-height: 1;
+  }
+
+  .chapter-intro p {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 1.05rem;
+  }
+
+  /* Main content */
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 40px 100px;
+  }
+
+  /* Scene markers */
+  .scene-marker {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 60px 0 32px;
+  }
+
+  .scene-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--light-sepia);
+    line-height: 1;
+    min-width: 44px;
+  }
+
+  .scene-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--ink);
+    border-bottom: 1px solid var(--light-sepia);
+    padding-bottom: 8px;
+    flex: 1;
+  }
+
+  /* Paragraphs */
+  p {
+    margin-bottom: 1.5em;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  p:first-of-type::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5em;
+    font-weight: 900;
+    float: left;
+    line-height: 0.75;
+    margin: 8px 12px 0 0;
+    color: var(--sepia);
+  }
+
+  /* Dialogue */
+  .dialogue {
+    margin: 24px 0;
+    padding-left: 24px;
+    border-left: 2px solid var(--light-sepia);
+  }
+
+  .dialogue p {
+    font-style: italic;
+    color: #3a2e22;
+    margin-bottom: 0.6em;
+    text-align: left;
+  }
+
+  .dialogue p:first-of-type::first-letter {
+    font-size: inherit;
+    font-weight: inherit;
+    float: none;
+    line-height: inherit;
+    margin: 0;
+    color: inherit;
+  }
+
+  /* Theory boxes */
+  .theory-box {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 40px 48px;
+    margin: 48px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .theory-box::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 120px; height: 120px;
+    border-left: 1px solid rgba(212,168,67,0.2);
+    border-bottom: 1px solid rgba(212,168,67,0.2);
+  }
+
+  .theory-author {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .theory-concept {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(245,240,232,0.5);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+
+  .theory-text {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.85);
+    text-align: left;
+  }
+
+  .theory-text::first-letter {
+    font-size: inherit;
+    font-weight: inherit;
+    float: none;
+    line-height: inherit;
+    margin: 0;
+    color: inherit;
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    margin: 56px -40px;
+    padding: 40px;
+    background: var(--cream);
+    border-top: 3px solid var(--ink);
+    border-bottom: 3px solid var(--ink);
+    text-align: center;
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0;
+    text-align: center;
+  }
+
+  .pull-quote p::first-letter {
+    font-size: inherit;
+    font-weight: inherit;
+    float: none;
+    line-height: inherit;
+    margin: 0;
+    color: inherit;
+  }
+
+  /* Scene break */
+  .scene-break {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 48px 0;
+    color: var(--accent);
+  }
+
+  .scene-break span {
+    font-size: 8px;
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .scene-break::before,
+  .scene-break::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--light-sepia);
+  }
+
+  /* Tags section */
+  .tags-section {
+    background: var(--light-sepia);
+    padding: 48px;
+    margin-top: 60px;
+    text-align: center;
+  }
+
+  .tags-label {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 4px;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .tag-item {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 8px 20px;
+    margin: 6px;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+
+  .tag-item strong {
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--ink);
+    color: rgba(245,240,232,0.4);
+    text-align: center;
+    padding: 32px;
+    font-size: 0.8rem;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 3px;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .header { animation: fadeUp 0.8s ease forwards; }
+  .container { animation: fadeUp 1s ease 0.2s both; }
+
+  @media (max-width: 600px) {
+    .container { padding: 40px 24px 80px; }
+    .theory-box { padding: 28px 28px; }
+    .pull-quote { margin: 40px -24px; padding: 32px 24px; }
+    .chapter-intro { padding: 28px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <span class="header-label">Fábrica de Conhecimento Sociológico — Conto I</span>
+  <h1>O Despertar para a<br><em>Modernidade</em></h1>
+  <div class="divider-header"></div>
+  <p class="header-sub">Durkheim · Marx · Weber</p>
+</header>
+
+<div class="chapter-intro" style="margin: 60px auto 0; padding: 40px 48px;">
+  <p>Uma sala de aula. Uma única palavra no quadro. E três jovens que, sem perceber, estavam prestes a enxergar o mundo com outros olhos.</p>
+</div>
+
+<div class="container">
+
+  <!-- CENA 1 -->
+  <div class="scene-marker">
+    <span class="scene-number">I</span>
+    <span class="scene-title">A Palavra no Quadro</span>
+  </div>
+
+  <p>Naquela manhã, ninguém na sala parecia especialmente interessado. Alguns alunos mexiam no celular, outros conversavam baixo, outros apenas olhavam para frente com expressão vazia, esperando o tempo passar. No quadro, o professor havia escrito uma única palavra, em letras grandes: <strong>MODERNIDADE</strong>.</p>
+
+  <p>Lucas observava a palavra sem muito entusiasmo. Para ele, aquilo era apenas mais um termo complicado que provavelmente cairia na prova. Mais um conceito distante da vida real.</p>
+
+  <p>O professor não começou explicando. Em vez disso, fez uma pergunta simples:</p>
+
+  <div class="dialogue">
+    <p>— Vocês acham que o mundo sempre foi assim?</p>
+  </div>
+
+  <p>Ninguém respondeu.</p>
+
+  <p>Lucas pensou rapidamente: <em>"assim como?"</em>. Com internet, trabalho, dinheiro, pressa, horários… claro que sim. Sempre foi assim. Como poderia ser diferente?</p>
+
+  <div class="dialogue">
+    <p>— Vamos tentar imaginar outra coisa — continuou o professor. — Um tempo em que não existia relógio organizando a vida das pessoas. Um tempo em que o trabalho não ocupava o centro da existência. Um tempo em que as pessoas não precisavam provar o tempo todo que eram produtivas.</p>
+  </div>
+
+  <p>Alguns alunos riram. Parecia uma fantasia.</p>
+
+  <p>Mas Lucas não riu. Porque, pela primeira vez, ele percebeu que não tinha certeza.</p>
+
+  <div class="scene-break">
+    <span></span><span></span><span></span>
+  </div>
+
+  <!-- CENA 2 -->
+  <div class="scene-marker">
+    <span class="scene-number">II</span>
+    <span class="scene-title">Tudo é Número</span>
+  </div>
+
+  <p>Na saída da aula, Lucas encontrou Mariana, colega de curso, visivelmente irritada.</p>
+
+  <div class="dialogue">
+    <p>— O que foi? — perguntou Lucas.</p>
+    <p>— Fui reprovada no estágio — respondeu ela. — Disseram que eu não bati a meta.</p>
+    <p>— Meta de quê?</p>
+    <p>— Atendimento. Número de clientes por hora. Tudo é número.</p>
+  </div>
+
+  <p>Lucas ficou em silêncio.</p>
+
+  <div class="dialogue">
+    <p>— Eu nem sei se gosto daquilo — continuou Mariana —, mas preciso. Todo mundo precisa.</p>
+  </div>
+
+  <p><em>Precisa.</em> A palavra ficou ecoando.</p>
+
+  <p>Naquela noite, em casa, Lucas observou o pai jantando rapidamente, enquanto olhava mensagens no celular. A mãe falava sobre contas, prazos, compromissos. Tudo parecia organizado por uma lógica invisível, mas rígida. Horários. Obrigações. Resultados. Nada ali parecia aleatório.</p>
+
+  <div class="pull-quote">
+    <p>"Se a sociedade foi construída assim… será que ela precisa continuar assim?"</p>
+  </div>
+
+  <!-- CENA 3 — DURKHEIM -->
+  <div class="scene-marker">
+    <span class="scene-number">III</span>
+    <span class="scene-title">Durkheim e a Solidariedade Perdida</span>
+  </div>
+
+  <p>No dia seguinte, o professor voltou ao quadro. Escreveu três nomes: Émile Durkheim, Karl Marx, Max Weber.</p>
+
+  <div class="dialogue">
+    <p>— Esses três autores — disse — tentaram entender o que aconteceu com a sociedade para chegarmos até aqui.</p>
+  </div>
+
+  <p>Lucas, agora, prestava atenção.</p>
+
+  <p>O professor começou a descrever um tipo de sociedade em que as pessoas viviam de forma muito semelhante. Faziam as mesmas atividades, compartilhavam crenças, tradições, valores. Havia uma forte sensação de pertencimento. Lucas imaginou uma pequena vila. Pessoas se conhecendo, vivendo de maneira parecida, com rotinas simples.</p>
+
+  <div class="dialogue">
+    <p>— Nesse tipo de sociedade — explicou o professor — a coesão vem da semelhança. Mas isso mudou. Com o tempo, surge a divisão do trabalho.</p>
+  </div>
+
+  <p>Lucas pensou imediatamente no mundo ao seu redor. Médicos, motoristas, professores, entregadores, programadores. Cada um fazendo algo diferente. As pessoas deixam de ser semelhantes e passam a depender umas das outras. Isso cria um novo tipo de solidariedade. Mas o professor fez uma pausa.</p>
+
+  <div class="dialogue">
+    <p>— Só que essa mudança não é sempre equilibrada. Quando as regras deixam de ser claras, quando as expectativas se tornam confusas, surge o que Durkheim chama de <strong>anomia</strong>.</p>
+  </div>
+
+  <p>A palavra ficou no ar.</p>
+
+  <div class="dialogue">
+    <p>— Anomia é desorientação social. É quando o indivíduo não sabe mais qual é o seu lugar, nem o que se espera dele.</p>
+  </div>
+
+  <p>Lucas lembrou de Mariana. Lembrou da própria dúvida sobre o futuro. Lembrou da sensação constante de estar atrasado, sem saber exatamente em relação a quê.</p>
+
+  <div class="theory-box">
+    <div class="theory-author">Émile Durkheim</div>
+    <div class="theory-concept">Solidariedade Orgânica & Anomia</div>
+    <p class="theory-text">Para Durkheim, as sociedades modernas são marcadas pela <em>solidariedade orgânica</em>: em vez de unidade pela semelhança, nos conectamos pela interdependência. Cada indivíduo ocupa uma função especializada. Mas quando essa interdependência não vem acompanhada de normas claras, surge a <em>anomia</em> — um estado de desorientação coletiva em que o indivíduo se sente à deriva, sem referências morais sólidas. É a sensação de estar correndo sem saber para onde, ou de precisar ser produtivo sem entender o porquê.</p>
+  </div>
+
+  <div class="scene-break">
+    <span></span><span></span><span></span>
+  </div>
+
+  <!-- CENA 4 — MARX -->
+  <div class="scene-marker">
+    <span class="scene-number">IV</span>
+    <span class="scene-title">Marx e a Engrenagem Humana</span>
+  </div>
+
+  <p>Na aula seguinte, o professor escreveu: <strong>Marx</strong>.</p>
+
+  <div class="dialogue">
+    <p>— Para Marx, o ponto central da sociedade moderna é o trabalho. Não qualquer trabalho. Um trabalho organizado pelo capitalismo.</p>
+  </div>
+
+  <div class="dialogue">
+    <p>— Como assim? — perguntou Lucas.</p>
+    <p>— As pessoas vendem sua força de trabalho em troca de salário. Mas o que produzem não lhes pertence. O produto do trabalho fica com quem controla os meios de produção.</p>
+  </div>
+
+  <p>Lucas franziu a testa. Pensou no estágio de Mariana. Pensou em pessoas trabalhando para empresas que não eram suas.</p>
+
+  <div class="dialogue">
+    <p>— Isso gera uma relação desigual. E pode levar à exploração. Além disso, o trabalhador pode se sentir distante daquilo que produz.</p>
+    <p>— Distante?</p>
+    <p>— Sim. Ele não se reconhece no resultado do seu próprio trabalho. Isso é o que Marx chama de <strong>alienação</strong>.</p>
+  </div>
+
+  <p>Lucas ficou em silêncio. Pensou no pai, trabalhando todos os dias sem parecer satisfeito. Pensou em pessoas fazendo coisas repetitivas, sem entender o sentido.</p>
+
+  <div class="dialogue">
+    <p>— O trabalho deixa de ser uma expressão da vida — concluiu o professor — e se torna uma obrigação para sobreviver.</p>
+  </div>
+
+  <div class="theory-box">
+    <div class="theory-author">Karl Marx</div>
+    <div class="theory-concept">Alienação & Modo de Produção Capitalista</div>
+    <p class="theory-text">Marx via no trabalho a essência humana — a maneira pela qual o ser humano transforma o mundo e a si mesmo. Mas no capitalismo, o trabalho se torna mercadoria. O trabalhador vende seu tempo e sua energia, mas não controla o processo, não decide o produto, não se reconhece no resultado. Isso é a <em>alienação</em>: a estranheza do homem em relação ao próprio trabalho, ao produto que cria, aos outros trabalhadores e, por fim, a si mesmo. Mariana, reprovada por não "bater meta", vivia exatamente isso — seu esforço medido por um número que nada dizia sobre quem ela era.</p>
+  </div>
+
+  <div class="scene-break">
+    <span></span><span></span><span></span>
+  </div>
+
+  <!-- CENA 5 — WEBER -->
+  <div class="scene-marker">
+    <span class="scene-number">V</span>
+    <span class="scene-title">Weber e a Gaiola de Ferro</span>
+  </div>
+
+  <p>Na semana seguinte, o último nome apareceu: <strong>Weber</strong>.</p>
+
+  <div class="dialogue">
+    <p>— Weber tentou entender como a vida moderna se organiza. Para ele, a modernidade é marcada pela <strong>racionalização</strong>.</p>
+    <p>— O que significa isso? — perguntou Mariana, agora mais interessada.</p>
+    <p>— Significa que tudo passa a ser organizado por cálculo, eficiência, previsibilidade.</p>
+  </div>
+
+  <p>Lucas pensou imediatamente nas metas do estágio. Nos horários. Nos números.</p>
+
+  <div class="dialogue">
+    <p>— Isso aparece nas empresas, nas instituições, no Estado… e até na vida pessoal. Criamos sistemas extremamente eficientes.</p>
+    <p>— Isso não é bom? — perguntou alguém.</p>
+    <p>— É — respondeu o professor. — Mas tem um custo. Weber diz que podemos acabar presos em uma <strong>"gaiola de ferro"</strong>.</p>
+  </div>
+
+  <p>Silêncio.</p>
+
+  <div class="dialogue">
+    <p>— Uma vida totalmente organizada, controlada, eficiente… mas sem liberdade real.</p>
+  </div>
+
+  <p>Lucas sentiu um desconforto. <em>Gaiola.</em> Mesmo sem grades visíveis.</p>
+
+  <div class="theory-box">
+    <div class="theory-author">Max Weber</div>
+    <div class="theory-concept">Racionalização & A Gaiola de Ferro</div>
+    <p class="theory-text">Weber observou que a modernidade substituiu a tradição e o misticismo pela razão instrumental: tudo deve ser calculável, previsível, eficiente. Burocracia, mercado, ciência — todos operam por essa lógica. O resultado é imenso poder organizacional, mas também uma armadilha: a <em>"gaiola de ferro"</em> (<em>stahlhartes Gehäuse</em>). Quando tudo se torna procedimento, protocolo, indicador de desempenho, o ser humano perde autonomia mesmo vivendo em liberdade formal. A empresa de Mariana funcionava perfeitamente. Mas ninguém dentro dela parecia realmente presente.</p>
+  </div>
+
+  <div class="scene-break">
+    <span></span><span></span><span></span>
+  </div>
+
+  <!-- CENA 6 — CONCLUSÃO -->
+  <div class="scene-marker">
+    <span class="scene-number">VI</span>
+    <span class="scene-title">A Pergunta que Fica</span>
+  </div>
+
+  <p>Naquela tarde, Lucas acompanhou Mariana até o novo estágio. Era uma empresa organizada em filas, telas, números. Cada pessoa tinha metas claras, tempo contado, desempenho monitorado. Ninguém parecia perdido. Mas ninguém parecia realmente presente.</p>
+
+  <div class="dialogue">
+    <p>— Aqui tudo funciona — disse Mariana, em voz baixa.</p>
+    <p>— Mas para quê? — respondeu Lucas.</p>
+  </div>
+
+  <p>Ela não soube responder.</p>
+
+  <p>Nos dias seguintes, Lucas começou a enxergar o mundo de outra forma. Durkheim estava nas regras invisíveis que organizavam a vida. Marx estava nas relações de trabalho, nas desigualdades, na dependência do dinheiro. Weber estava nos sistemas, nos cálculos, na eficiência que não deixava espaço para o inesperado. Três formas diferentes de olhar. Mas que pareciam descrever o mesmo cenário: o mundo moderno.</p>
+
+  <p>Naquela noite, Lucas desligou o celular mais cedo. Ficou olhando para o teto. Pensou no que parecia natural. Pensou no que era, na verdade, construído. Pensou no fato de que ninguém, isoladamente, tinha criado aquele mundo — mas todos participavam dele.</p>
+
+  <p>E, pela primeira vez, formulou a pergunta com clareza.</p>
+
+  <div class="pull-quote">
+    <p>"Se a sociedade foi construída assim… será que ela precisa continuar assim?"</p>
+  </div>
+
+  <p>O silêncio não trouxe resposta. Mas trouxe algo mais importante: a consciência de que aquela pergunta existia.</p>
+
+  <p>E, talvez, fosse exatamente ali que começava a sociologia — não em aceitar o mundo como ele é, mas em entender como ele se tornou assim, e o que isso significa para quem vive dentro dele.</p>
+
+  <!-- TAGS -->
+  <div class="tags-section">
+    <span class="tags-label">Conceitos Sociológicos Presentes no Conto</span>
+    <div>
+      <span class="tag-item"><strong>Marx</strong> — Alienação</span>
+      <span class="tag-item"><strong>Marx</strong> — Modo de Produção Capitalista</span>
+      <span class="tag-item"><strong>Weber</strong> — Racionalização</span>
+      <span class="tag-item"><strong>Weber</strong> — Gaiola de Ferro</span>
+      <span class="tag-item"><strong>Durkheim</strong> — Anomia</span>
+      <span class="tag-item"><strong>Durkheim</strong> — Solidariedade Orgânica</span>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Fábrica de Conhecimento Sociológico &nbsp;·&nbsp; Conto I &nbsp;·&nbsp; O Despertar para a Modernidade
+</footer>
+
+</body>
+</html>
