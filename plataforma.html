@@ -1,45 +1,636 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conto 2: A Sociedade de Plataformas</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f5f5f7;
-            color: #1d1d1f;
-            line-height: 1.6;
-            margin: 0;
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .container {
-            max-width: 700px;
-            background: white;
-            padding: 60px;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border: 1px solid #d2d2d7;
-        }
-        h1 { font-weight: 600; font-size: 2.2em; color: #000; margin-bottom: 30px; }
-        p { margin-bottom: 20px; font-size: 1.1em; color: #333; }
-        .highlight { color: #0066cc; font-weight: 500; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O Deus Invisível — Conto II</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #13161d;
+    --surface2: #1a1e28;
+    --text: #dce3f0;
+    --muted: #6b7591;
+    --accent: #4f9cf9;
+    --accent2: #7c6af7;
+    --gold: #f0c060;
+    --danger: #e05a5a;
+    --border: rgba(79,156,249,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Lora', serif;
+    line-height: 1.95;
+    font-size: 18px;
+    overflow-x: hidden;
+  }
+
+  /* Subtle grid texture */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(79,156,249,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79,156,249,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Header */
+  .header {
+    position: relative;
+    padding: 100px 40px 80px;
+    text-align: center;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(ellipse, rgba(79,156,249,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .header-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 6px;
+    color: var(--accent);
+    margin-bottom: 24px;
+    display: block;
+    opacity: 0.8;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 28px;
+    color: var(--text);
+  }
+
+  .header h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header-divider {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+    margin: 0 auto 28px;
+  }
+
+  .header-sub {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+  }
+
+  /* Notification bar — decorative */
+  .notif-bar {
+    max-width: 680px;
+    margin: 0 auto 60px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-family: 'Lora', serif;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  .notif-dot {
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* Main content */
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 20px 40px 100px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Scene markers */
+  .scene-marker {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 64px 0 32px;
+  }
+
+  .scene-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px;
+    color: var(--surface2);
+    line-height: 1;
+    min-width: 40px;
+    text-shadow: 0 0 20px rgba(79,156,249,0.3);
+  }
+
+  .scene-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    flex: 1;
+  }
+
+  /* Paragraphs */
+  p {
+    margin-bottom: 1.5em;
+    text-align: justify;
+    hyphens: auto;
+    color: rgba(220,227,240,0.88);
+  }
+
+  .container > p:first-of-type::first-letter,
+  .scene-first::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.2em;
+    font-weight: 900;
+    float: left;
+    line-height: 0.75;
+    margin: 8px 12px 0 0;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Dialogue */
+  .dialogue {
+    margin: 24px 0;
+    padding: 20px 28px;
+    background: var(--surface);
+    border-left: 2px solid var(--border);
+  }
+
+  .dialogue p {
+    font-style: italic;
+    color: rgba(220,227,240,0.7);
+    margin-bottom: 0.5em;
+    text-align: left;
+  }
+
+  .dialogue p:last-child { margin-bottom: 0; }
+
+  .dialogue p::first-letter {
+    font-size: inherit;
+    font-weight: inherit;
+    float: none;
+    line-height: inherit;
+    margin: 0;
+    -webkit-text-fill-color: rgba(220,227,240,0.7);
+  }
+
+  /* Theory boxes */
+  .theory-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    padding: 40px 44px;
+    margin: 48px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .theory-box::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(ellipse at top right, rgba(79,156,249,0.06), transparent 70%);
+  }
+
+  .theory-author {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 4px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 6px;
+  }
+
+  .theory-concept {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .theory-text {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: rgba(220,227,240,0.75);
+    text-align: left;
+  }
+
+  .theory-text::first-letter {
+    font-size: inherit;
+    font-weight: inherit;
+    float: none;
+    line-height: inherit;
+    margin: 0;
+    -webkit-text-fill-color: rgba(220,227,240,0.75);
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    margin: 56px -40px;
+    padding: 48px 40px;
+    background: var(--surface2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+    position: relative;
+  }
+
+  .pull-quote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 120px; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 3vw, 1.7rem);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--text);
+    margin: 0;
+    text-align: center;
+  }
+
+  .pull-quote p::first-letter {
+    font-size: inherit;
+    font-weight: inherit;
+    float: none;
+    -webkit-text-fill-color: var(--text);
+  }
+
+  /* Highlight word */
+  .hl {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  /* Scene break */
+  .scene-break {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 52px 0;
+  }
+
+  .scene-break::before,
+  .scene-break::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border));
+  }
+
+  .scene-break::after {
+    background: linear-gradient(to left, transparent, var(--border));
+  }
+
+  .scene-break-icon {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    opacity: 0.5;
+  }
+
+  /* Tags section */
+  .tags-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 48px;
+    margin-top: 60px;
+    text-align: center;
+  }
+
+  .tags-label {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 5px;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .tag-item {
+    display: inline-block;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 8px 18px;
+    margin: 5px;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.88rem;
+    transition: all 0.2s;
+  }
+
+  .tag-item:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .tag-item strong {
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    text-align: center;
+    padding: 32px;
+    font-size: 0.75rem;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 4px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .header { animation: fadeUp 0.8s ease forwards; }
+  .container { animation: fadeUp 1s ease 0.2s both; }
+
+  @media (max-width: 600px) {
+    .container { padding: 20px 24px 80px; }
+    .theory-box { padding: 28px 24px; }
+    .pull-quote { margin: 40px -24px; padding: 36px 24px; }
+    .notif-bar { margin: 0 24px 48px; }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>A Imersão na Sociedade de Plataformas</h1>
 
-        <p>Miguel acordava com a urgência do algoritmo. Antes mesmo do café, sua mão buscava o celular. Não era apenas um aparelho; era o <span class="highlight">"Deus invisível"</span> que ditava o humor da casa através de gráficos e notificações.</p>
+<header class="header">
+  <span class="header-label">Fábrica de Conhecimento Sociológico — Conto II</span>
+  <h1>O <em>Deus Invisível</em></h1>
+  <div class="header-divider"></div>
+  <p class="header-sub">Plataformas · Trabalho · Valor · Controle Social</p>
+</header>
 
-        <p>Sua mãe respondia mensagens enquanto comia; seu pai vigiava o "Mercado". A frase da irmã ressoava como um veredito da nova era: "Você não tem um trabalho. Você é o seu trabalho."</p>
+<div class="notif-bar">
+  <div class="notif-dot"></div>
+  <span>Nada dizia explicitamente "corra". Mas tudo parecia exigir exatamente isso.</span>
+</div>
 
-        <p>Enquanto a irmã navegava pelo sistema com a fluidez de quem possui o capital cultural necessário, Miguel via o entregador na rua ser apenas um ponto monitorado no GPS. A plataforma não criava o abismo, ela apenas o automatizava.</p>
+<div class="container">
 
-        <p>Ao desligar o aparelho, Miguel descobriu que o silêncio não era um vazio, mas um espaço de resistência contra o "Deus" que ninguém ousava questionar.</p>
+  <!-- CENA 1 -->
+  <div class="scene-marker">
+    <span class="scene-number">I</span>
+    <span class="scene-title">A Urgência Silenciosa</span>
+  </div>
 
-        </div>
+  <p class="scene-first">Miguel não lembrava de um dia em que tivesse acordado sem pressa. Antes mesmo de abrir os olhos completamente, já sentia uma espécie de peso no ar — uma urgência silenciosa, como se algo importante estivesse acontecendo e ele estivesse atrasado para aquilo. Sua mão se movia quase automaticamente até o celular. A tela acendia e, com ela, surgiam números, mensagens, metas, avisos, vídeos curtos, cobranças indiretas. Nada dizia explicitamente "corra", mas tudo parecia exigir exatamente isso.</p>
+
+  <p>Na casa de Miguel, ninguém falava sobre isso. Mas todos obedeciam. Sua mãe trabalhava o tempo inteiro, mesmo quando estava em casa. Respondia mensagens enquanto comia, enquanto falava com ele, enquanto tentava descansar. Seu pai passava horas olhando para gráficos em uma tela maior, acompanhando variações de números que Miguel não entendia, mas que pareciam decidir o humor da casa. Quando os números subiam, o silêncio era leve. Quando caíam, o ar ficava pesado.</p>
+
+  <div class="dialogue">
+    <p>— Pai, o que são esses números? — perguntou certa vez.</p>
+    <p>— Mercado — respondeu, sem tirar os olhos da tela.</p>
+    <p>— Mercado de quê?</p>
+    <p>— De tudo.</p>
+  </div>
+
+  <p>Miguel não entendeu completamente, mas guardou a resposta.</p>
+
+  <div class="scene-break"><div class="scene-break-icon"></div></div>
+
+  <p>Na escola, as coisas não eram muito diferentes. Embora os professores ensinassem matérias tradicionais, havia algo mais sendo aprendido o tempo todo, nos intervalos, nas conversas, nos olhares. Os colegas falavam de seguidores, de engajamento, de dinheiro que podiam ganhar com vídeos, jogos ou pequenos trabalhos online. Alguns já faziam entregas por aplicativo com a ajuda de parentes. Outros passavam horas tentando fazer algo "viralizar".</p>
+
+  <p>Até as brincadeiras tinham mudado. Já não eram apenas brincadeiras — eram <span class="hl">oportunidades</span>.</p>
+
+  <!-- CENA 2 -->
+  <div class="scene-marker">
+    <span class="scene-number">II</span>
+    <span class="scene-title">Quem Organiza a Sociedade?</span>
+  </div>
+
+  <p class="scene-first">Foi numa aula de introdução à sociologia que algo começou a se deslocar dentro de Miguel. O professor entrou na sala, escreveu lentamente no quadro a palavra <strong>SOCIEDADE</strong> e se virou para os alunos.</p>
+
+  <div class="dialogue">
+    <p>— O que é isso?</p>
+  </div>
+
+  <p>As respostas vieram rápidas: "um grupo de pessoas", "um país", "gente vivendo junto". O professor assentiu, mas continuou:</p>
+
+  <div class="dialogue">
+    <p>— E quem organiza a sociedade?</p>
+  </div>
+
+  <p>Silêncio.</p>
+
+  <p>Miguel sentiu um desconforto estranho. Era como se aquela pergunta não tivesse sido feita antes. Como se todos vivessem dentro de algo que nunca tinham parado para observar de fora.</p>
+
+  <p>Naquele dia, ao voltar para casa, Miguel decidiu prestar atenção em coisas que antes passavam despercebidas. No caminho, viu um entregador correndo contra o tempo, guiado por um aplicativo que determinava sua rota, sua velocidade e até quanto ele ganharia. Viu uma mulher atravessando a rua sem olhar para os lados, completamente absorvida por notificações. Viu um homem discutindo com alguém invisível através de um fone, negociando algo que parecia urgente, embora ninguém ao redor soubesse o quê.</p>
+
+  <p>Tudo parecia conectado por uma lógica que não era dita, mas era seguida.</p>
+
+  <div class="pull-quote">
+    <p>"O que parece natural muitas vezes é apenas o resultado de um longo processo social."</p>
+  </div>
+
+  <!-- CENA 3 -->
+  <div class="scene-marker">
+    <span class="scene-number">III</span>
+    <span class="scene-title">O Ritual sem Nome</span>
+  </div>
+
+  <p class="scene-first">Nos dias seguintes, ele começou a observar com mais atenção a rotina das pessoas. Percebeu que todos seguiam um padrão semelhante: acordar, checar o celular, responder mensagens, produzir algo, consumir algo, repetir. Mesmo o descanso parecia fazer parte desse ciclo — não como um fim, mas como uma preparação para continuar.</p>
+
+  <p>Era como um ritual. Mas ninguém chamava de ritual.</p>
+
+  <p>Miguel começou a imaginar aquilo como uma espécie de religião. Não uma religião antiga, com templos e imagens. Era algo diferente. Um sistema invisível, sem nome declarado, mas com regras claras. As pessoas faziam oferendas todos os dias: seu tempo, sua atenção, sua energia. Em troca, recebiam números — salários, curtidas, visualizações, lucros.</p>
+
+  <p>Alguns recebiam mais. Outros, menos. Mas todos acreditavam. Ou, pelo menos, todos obedeciam.</p>
+
+  <div class="theory-box">
+    <div class="theory-author">Plataformização do Trabalho</div>
+    <div class="theory-concept">Controle Algorítmico & Uberização</div>
+    <p class="theory-text">O entregador que Miguel viu não tinha patrão visível. Tinha um algoritmo. Esse fenômeno — chamado de <em>plataformização</em> ou <em>uberização</em> do trabalho — representa uma nova forma de controle social: o trabalhador é formalmente "autônomo", mas na prática é gerenciado por métricas, avaliações e sistemas que definem quanto ganha, quando trabalha e como é punido. A liberdade aparente esconde uma submissão real — e mais invisível do que qualquer hierarquia tradicional.</p>
+  </div>
+
+  <div class="scene-break"><div class="scene-break-icon"></div></div>
+
+  <!-- CENA 4 -->
+  <div class="scene-marker">
+    <span class="scene-number">IV</span>
+    <span class="scene-title">O Deus Sem Rosto</span>
+  </div>
+
+  <p class="scene-first">Foi então que uma ideia começou a se formar com mais clareza: o dinheiro não era apenas uma ferramenta. Tinha se tornado uma medida de tudo. Do valor das coisas, do valor das pessoas, do valor do tempo.</p>
+
+  <p>Era como um Deus invisível. Sem rosto. Sem voz. Mas com poder absoluto.</p>
+
+  <p>Miguel decidiu testar essa ideia. Um sábado, desligou o celular por três horas. No começo, foi difícil. Seu corpo parecia inquieto, sua mente procurava estímulos, como se estivesse faltando algo essencial. Ele percebeu que aquilo não era apenas hábito. Era <span class="hl">dependência</span>.</p>
+
+  <p>Mas, aos poucos, algo mudou. O tempo pareceu mais lento. Os sons ficaram mais claros. Seus pensamentos começaram a aparecer com mais nitidez.</p>
+
+  <div class="dialogue">
+    <p>— Miguel, o que você está fazendo?</p>
+    <p>— Nada.</p>
+    <p>— Como assim, nada?</p>
+    <p>— Só… nada.</p>
+  </div>
+
+  <p>Ela franziu a testa.</p>
+
+  <div class="dialogue">
+    <p>— Você não pode ficar assim. Vai <em>perder tempo</em>.</p>
+  </div>
+
+  <p>A expressão ecoou na cabeça de Miguel. Como se o tempo só tivesse valor quando estivesse sendo usado para produzir alguma coisa.</p>
+
+  <div class="theory-box">
+    <div class="theory-author">O Fetichismo da Mercadoria</div>
+    <div class="theory-concept">Marx & o Valor como Construção Social</div>
+    <p class="theory-text">Marx descreveu como, no capitalismo, as relações entre pessoas se tornam relações entre coisas. O dinheiro, que deveria ser apenas um meio de troca, passa a parecer dotado de poder próprio — como se seu valor fosse natural e não construído. Isso é o <em>fetichismo da mercadoria</em>: atribuímos a objetos e números um poder que, na verdade, vem das relações sociais que os sustentam. O "Deus invisível" que Miguel sentia não estava no dinheiro em si — estava na crença coletiva que o tornava real.</p>
+  </div>
+
+  <!-- CENA 5 -->
+  <div class="scene-marker">
+    <span class="scene-number">V</span>
+    <span class="scene-title">Você É o Seu Trabalho</span>
+  </div>
+
+  <p class="scene-first">Naquela semana, sua irmã mais velha, que estudava na universidade, comentou durante o jantar:</p>
+
+  <div class="dialogue">
+    <p>— Lá a gente aprende que o trabalho hoje não é só o que a gente faz. É o que a gente é.</p>
+  </div>
+
+  <div class="dialogue">
+    <p>— Como assim? — perguntou Miguel.</p>
+    <p>— Você não "tem" um trabalho. Você "é" o seu trabalho. Está sempre disponível. Sempre conectado. Sempre produzindo alguma coisa — mesmo quando parece que não.</p>
+  </div>
+
+  <p>Miguel lembrou dos colegas tentando viralizar vídeos, dos adultos respondendo mensagens sem parar, do entregador correndo contra o relógio.</p>
+
+  <div class="dialogue">
+    <p>— E quem não faz isso? — perguntou.</p>
+    <p>— Fica para trás.</p>
+  </div>
+
+  <p><em>Ficar para trás.</em> Outra expressão que parecia definir tudo sem explicar nada.</p>
+
+  <div class="theory-box">
+    <div class="theory-author">Byung-Chul Han</div>
+    <div class="theory-concept">A Sociedade do Desempenho</div>
+    <p class="theory-text">O filósofo coreano-alemão Byung-Chul Han observou que a sociedade contemporânea não opera mais principalmente por proibições e obrigações — mas por <em>desempenho</em>. O sujeito moderno não é explorado por um opressor externo: ele se explora voluntariamente, acreditando que é livre. "Você pode" substitui "você deve" — mas o resultado é o mesmo: exaustão, ansiedade, impossibilidade de parar. A irmã de Miguel descrevia exatamente isso: quando identidade e trabalho se fundem, o descanso vira culpa.</p>
+  </div>
+
+  <div class="scene-break"><div class="scene-break-icon"></div></div>
+
+  <!-- CENA 6 -->
+  <div class="scene-marker">
+    <span class="scene-number">VI</span>
+    <span class="scene-title">Quem Escolheu Esse Deus?</span>
+  </div>
+
+  <p class="scene-first">Naquela noite, Miguel tentou imaginar um mundo diferente. Um mundo em que o tempo não fosse medido apenas pelo que produz. Em que as pessoas pudessem parar sem culpa. Em que o valor não fosse reduzido a números. Mas a imagem não se formava com clareza. Era difícil imaginar algo fora daquilo que todos viviam.</p>
+
+  <p>Mesmo assim, uma pergunta continuava voltando, cada vez mais forte.</p>
+
+  <div class="dialogue">
+    <p>— Quem escolheu esse Deus?</p>
+  </div>
+
+  <p>Ele perguntou ao pai. "Sempre foi assim", respondeu, sem olhar. Perguntou à mãe. "É o mundo", disse ela. Perguntou ao professor.</p>
+
+  <div class="dialogue">
+    <p>— Essa é uma das questões mais importantes da sociologia.</p>
+  </div>
+
+  <p>Mas nenhuma resposta parecia suficiente. Porque todas evitavam o ponto central: se ninguém escolheu… então por que todos obedecem?</p>
+
+  <p>Naquela noite, antes de dormir, Miguel colocou o celular ao lado da cama. Ficou olhando para ele por alguns segundos. Pensou em tudo o que aquele objeto concentrava: trabalho, dinheiro, informação, controle, expectativa. Pensou também no silêncio que havia experimentado. Então, pela segunda vez, decidiu desligá-lo.</p>
+
+  <p>O quarto ficou quieto. O tempo pareceu se expandir.</p>
+
+  <p>Miguel fechou os olhos, mas não dormiu imediatamente. Ficou ali, pensando. E, pela primeira vez, fez uma pergunta que não queria apenas responder — queria entender:</p>
+
+  <div class="pull-quote">
+    <p>"E se esse Deus só existe porque ninguém ousa questionar?"</p>
+  </div>
+
+  <p>O silêncio permaneceu. Mas, dessa vez, não era um vazio. Era um espaço.</p>
+
+  <p>E Miguel percebeu que, talvez, fosse exatamente ali que a sociologia começava.</p>
+
+  <!-- TAGS -->
+  <div class="tags-section">
+    <span class="tags-label">Conceitos Sociológicos Presentes no Conto</span>
+    <div>
+      <span class="tag-item"><strong>Marx</strong> — Fetichismo da Mercadoria</span>
+      <span class="tag-item"><strong>Marx</strong> — Alienação</span>
+      <span class="tag-item"><strong>Han</strong> — Sociedade do Desempenho</span>
+      <span class="tag-item"><strong>Goffman</strong> — Controle Social</span>
+      <span class="tag-item"><strong>Plataformização</strong> — Uberização do Trabalho</span>
+      <span class="tag-item"><strong>Weber</strong> — Racionalização</span>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Fábrica de Conhecimento Sociológico &nbsp;·&nbsp; Conto II &nbsp;·&nbsp; O Deus Invisível
+</footer>
+
 </body>
 </html>
