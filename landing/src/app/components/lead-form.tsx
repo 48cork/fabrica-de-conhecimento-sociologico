@@ -43,17 +43,18 @@ export default function LeadForm() {
   }
 
   return (
-    <section id="formulario" className="py-24 px-4 bg-gradient-to-b from-gray-900 to-gray-950">
+    <section id="cadastro" className="py-24 px-4 bg-gradient-to-b from-gray-900 to-gray-950">
       <div className="max-w-xl mx-auto">
-        <div className="text-center mb-10">
+        <div className="mb-10">
           <span className="font-mono text-xs text-indigo-400 uppercase tracking-widest">
-            Acesso
+            Acesso aos Materiais
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-white">
-            Entre na Fábrica.
+            Cadastre seu e-mail institucional.
           </h2>
           <p className="mt-3 text-gray-400 leading-relaxed">
-            Acesse os materiais, análises e atualizações do curso.
+            Acesse os materiais do experimento, análises e atualizações do curso —
+            direto no seu e-mail da UFCG.
           </p>
         </div>
 
@@ -65,8 +66,11 @@ export default function LeadForm() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <p className="font-mono text-green-400 font-semibold text-lg">
-                Cadastro realizado. Bem-vindo à Fábrica.
+              <p className="font-mono text-green-400 font-semibold text-lg mb-2">
+                Cadastro realizado.
+              </p>
+              <p className="font-mono text-gray-500 text-sm">
+                Você vai receber os materiais no e-mail informado.
               </p>
             </div>
           ) : (
@@ -81,7 +85,7 @@ export default function LeadForm() {
                   value={nome}
                   onChange={(e) => setNome(e.target.value)}
                   placeholder="Seu nome"
-                  className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-500/60 focus:bg-white/8 transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-500/60 transition-all duration-200"
                 />
               </div>
 
@@ -102,7 +106,7 @@ export default function LeadForm() {
                   className={`w-full px-4 py-3 rounded-lg bg-white/5 border text-white placeholder-gray-600 focus:outline-none transition-all duration-200 ${
                     emailError
                       ? 'border-red-500/60 focus:border-red-500'
-                      : 'border-white/10 focus:border-indigo-500/60 focus:bg-white/8'
+                      : 'border-white/10 focus:border-indigo-500/60'
                   }`}
                 />
                 {emailError && (
@@ -135,12 +139,12 @@ export default function LeadForm() {
                     Processando...
                   </>
                 ) : (
-                  'ENTRAR NA FÁBRICA →'
+                  'ACESSAR OS MATERIAIS →'
                 )}
               </button>
 
               <p className="text-center font-mono text-xs text-gray-600">
-                Seus dados ficam só aqui. Sem spam. Sem lista de terceiros.
+                Apenas e-mail institucional da UFCG. Sem spam. Sem lista de terceiros.
               </p>
             </form>
           )}

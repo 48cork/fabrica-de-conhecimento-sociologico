@@ -1,28 +1,38 @@
-const problems = [
+const issues = [
   {
-    num: '01',
-    title: '"Os textos são impossíveis."',
-    desc: 'Você abre o PDF da ementa e parece outro idioma. Durkheim, Marx, Weber — nomes que não dizem nada ainda, mas que vão cair na prova.',
+    id: '01',
+    tag: 'Viés Algorítmico',
+    tagColor: 'text-red-400',
+    title: 'O dataset reflete o mundo. Se o mundo é desigual, o modelo aprende a desigualdade.',
+    desc: 'Modelos de linguagem são treinados em texto humano. Texto humano carrega estrutura de classe, raça e gênero. Isso não é bug — é design.',
   },
   {
-    num: '02',
-    title: '"Não vejo relação com a minha vida."',
-    desc: 'O professor fala de revolução industrial, você pensa no iFood. Ninguém fez essa ponte ainda.',
+    id: '02',
+    tag: 'Impacto Real',
+    tagColor: 'text-orange-400',
+    title: 'Algoritmos de crédito, saúde e justiça criminal já tomam decisões sobre vidas humanas.',
+    desc: 'COMPAS, sistemas de concessão de crédito, triagem de currículos. O código que você vai escrever vai operar nesse campo — queira ou não.',
   },
   {
-    num: '03',
-    title: '"Cheguei do interior e me sinto perdido aqui."',
-    desc: 'A universidade tem um ritmo que ninguém te ensinou. A biblioteca, o sistema, os professores — tudo parece feito pra quem já sabia.',
+    id: '03',
+    tag: 'Ponto Cego Técnico',
+    tagColor: 'text-yellow-400',
+    title: 'Ética em IA não aparece em Algoritmos nem em Estruturas de Dados.',
+    desc: 'A grade curricular de TI entrega a ferramenta sem entregar a pergunta: "para quem esse sistema vai servir, e quem ele vai prejudicar?"',
   },
   {
-    num: '04',
-    title: '"Trabalho pra pagar o curso e mal tenho tempo de estudar."',
-    desc: 'Entre o bico, a condução e a família, o tempo de estudo é o que sobra — e quase nunca sobra nada.',
+    id: '04',
+    tag: 'Reprodução de Classe',
+    tagColor: 'text-indigo-400',
+    title: 'O ChatGPT que você usa todo dia não responde igual para todo mundo.',
+    desc: 'Declare renda baixa, escolaridade básica e localização periférica — e compare as respostas com um perfil de alta renda. Os dados são os mesmos. O tratamento, não.',
   },
   {
-    num: '05',
-    title: '"Sinto que Sociologia é só teoria, não resolve nada."',
-    desc: 'Você entrou com dúvida se valeu a pena. O curso parece distante do mercado, do território, da realidade do Sertão.',
+    id: '05',
+    tag: 'Responsabilidade',
+    tagColor: 'text-blue-400',
+    title: 'Quando você lança um sistema sem entender isso, você não é neutro. Você é cúmplice.',
+    desc: 'Neutralidade técnica é uma posição política. Desenvolvedores que ignoram impacto social não estão fora do problema — estão dentro dele, construindo a infraestrutura.',
   },
 ]
 
@@ -30,28 +40,28 @@ export default function Problem() {
   return (
     <section id="problema" className="py-24 px-4 bg-gray-950">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <span className="font-mono text-xs text-indigo-400 uppercase tracking-widest">
-            Diagnóstico
+        <div className="mb-16">
+          <span className="font-mono text-xs text-red-400 uppercase tracking-widest">
+            O que ninguém te contou na grade de TI
           </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-white">
-            5 dores que o calouro de Sociologia da UFCG reconhece
+          <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-white max-w-2xl leading-tight">
+            5 fatos sobre algoritmos e desigualdade que você precisa entender antes de entrar no mercado
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {problems.map((p, i) => (
-            <div
-              key={p.num}
-              className={`glass-panel p-6 rounded-xl ${i === 4 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
-            >
-              <span className="font-mono text-xs text-indigo-400/60 mb-3 block">
-                {p.num}
-              </span>
-              <h3 className="text-white font-semibold mb-3 leading-snug">
-                {p.title}
-              </h3>
-              <p className="text-gray-400 text-sm leading-relaxed">{p.desc}</p>
+        <div className="flex flex-col gap-4">
+          {issues.map((item) => (
+            <div key={item.id} className="glass-panel p-6 rounded-xl flex flex-col sm:flex-row gap-4 sm:gap-8">
+              <div className="flex-shrink-0 flex items-start gap-4 sm:w-64">
+                <span className="font-mono text-xs text-gray-700 mt-1">{item.id}</span>
+                <span className={`font-mono text-xs uppercase tracking-wider ${item.tagColor}`}>
+                  {item.tag}
+                </span>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-white font-semibold leading-snug mb-2">{item.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+              </div>
             </div>
           ))}
         </div>

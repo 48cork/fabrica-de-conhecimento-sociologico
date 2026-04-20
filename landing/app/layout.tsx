@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Fábrica de Conhecimento Sociológico — UFCG",
+  title: "A IA Tem Classe Social? — Sociologia UFCG 2026.1",
   description:
-    "A Sociologia já estava no seu celular antes de você entrar na UFCG. Dashboard AIOX v2.0 para calouros de Sociologia do Sertão Paraibano.",
+    "Experimento: teste o ChatGPT com dois perfis opostos e analise o viés algorítmico usando Marx, Weber e Durkheim. Curso de Sociologia para alunos de TI da UFCG.",
 };
 
 export default function RootLayout({
