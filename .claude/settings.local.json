@@ -10,7 +10,11 @@
       "Bash(gh repo:*)",
       "Bash(sudo apt:*)",
       "Bash(grep -n \"<!-- Bauman\\\\|<!-- Conto\\\\|const questions\\\\|correct: 1,$\\\\|correct: 2,$\\\\|correct: 3,$\" /home/sergio_farias/projetos/cohort-8aula260326/index.html)",
-      "Bash(grep -n \"correct: 1,$\" /home/sergio_farias/projetos/cohort-8aula260326/index.html)"
+      "Bash(grep -n \"correct: 1,$\" /home/sergio_farias/projetos/cohort-8aula260326/index.html)",
+      "Bash(code *)",
+      "Bash(npx create-next-app@latest *)",
+      "Bash(npm install *)",
+      "Bash(npm run *)"
     ]
   }
 }
