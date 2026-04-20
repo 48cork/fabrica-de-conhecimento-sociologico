@@ -9,20 +9,8 @@ export default function LeadForm() {
   const [nome, setNome] = useState('')
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<Status>('idle')
-  const [emailError, setEmailError] = useState('')
-
-  function validateEmail(value: string) {
-    if (!value.includes('@ufcg.edu.br') && !value.includes('@estudante.ufcg.edu.br')) {
-      setEmailError('Use seu e-mail institucional (@ufcg.edu.br ou @estudante.ufcg.edu.br)')
-      return false
-    }
-    setEmailError('')
-    return true
-  }
-
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (!validateEmail(email)) return
 
     setStatus('loading')
 
@@ -50,11 +38,11 @@ export default function LeadForm() {
             Acesso aos Materiais
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-white">
-            Cadastre seu e-mail institucional.
+            Cadastre seu e-mail.
           </h2>
           <p className="mt-3 text-gray-400 leading-relaxed">
             Acesse os materiais do experimento, análises e atualizações do curso —
-            direto no seu e-mail da UFCG.
+            direto no seu e-mail.
           </p>
         </div>
 
@@ -91,27 +79,16 @@ export default function LeadForm() {
 
               <div>
                 <label className="block font-mono text-xs text-gray-400 uppercase tracking-widest mb-2">
-                  E-mail institucional
+                  E-mail
                 </label>
                 <input
                   type="email"
                   required
                   value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value)
-                    if (emailError) validateEmail(e.target.value)
-                  }}
-                  onBlur={(e) => validateEmail(e.target.value)}
-                  placeholder="nome@ufcg.edu.br"
-                  className={`w-full px-4 py-3 rounded-lg bg-white/5 border text-white placeholder-gray-600 focus:outline-none transition-all duration-200 ${
-                    emailError
-                      ? 'border-red-500/60 focus:border-red-500'
-                      : 'border-white/10 focus:border-indigo-500/60'
-                  }`}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="seu@email.com"
+                  className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-500/60 transition-all duration-200"
                 />
-                {emailError && (
-                  <p className="mt-1.5 font-mono text-xs text-red-400">{emailError}</p>
-                )}
               </div>
 
               {status === 'error' && (
@@ -144,7 +121,7 @@ export default function LeadForm() {
               </button>
 
               <p className="text-center font-mono text-xs text-gray-600">
-                Apenas e-mail institucional da UFCG. Sem spam. Sem lista de terceiros.
+                Sem spam. Sem lista de terceiros.
               </p>
             </form>
           )}
