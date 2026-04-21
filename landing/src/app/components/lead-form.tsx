@@ -9,6 +9,7 @@ export default function LeadForm() {
   const [nome, setNome] = useState('')
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<Status>('idle')
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
 
@@ -31,40 +32,42 @@ export default function LeadForm() {
   }
 
   return (
-    <section id="cadastro" className="py-24 px-4 bg-gradient-to-b from-gray-900 to-gray-950">
-      <div className="max-w-xl mx-auto">
+    <section id="cadastro" className="py-24 px-6 bg-[#0e1628]">
+      <div className="section-divider mb-24" />
+      <div className="max-w-lg mx-auto">
+
         <div className="mb-10">
-          <span className="font-mono text-xs text-indigo-400 uppercase tracking-widest">
+          <span className="font-mono text-xs text-indigo-400 uppercase tracking-[0.15em]">
             Acesso aos Materiais
           </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-white">
+          <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
             Cadastre seu e-mail.
           </h2>
-          <p className="mt-3 text-gray-400 leading-relaxed">
+          <p className="mt-3 text-slate-400 leading-relaxed">
             Acesse os materiais do experimento, análises e atualizações do curso —
             direto no seu e-mail.
           </p>
         </div>
 
-        <div className="glass-panel p-8 rounded-2xl">
+        <div className="glass-panel p-7 rounded-2xl">
           {status === 'success' ? (
-            <div className="text-center py-8">
-              <div className="w-16 h-16 rounded-full bg-green-500/20 border border-green-500/30 flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="text-center py-10">
+              <div className="w-14 h-14 rounded-full bg-green-500/15 border border-green-500/25 flex items-center justify-center mx-auto mb-5">
+                <svg className="w-7 h-7 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
               <p className="font-mono text-green-400 font-semibold text-lg mb-2">
                 Cadastro realizado.
               </p>
-              <p className="font-mono text-gray-500 text-sm">
+              <p className="font-mono text-slate-500 text-sm">
                 Você vai receber os materiais no e-mail informado.
               </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div>
-                <label className="block font-mono text-xs text-gray-400 uppercase tracking-widest mb-2">
+                <label className="block font-mono text-xs text-slate-400 uppercase tracking-[0.12em] mb-2">
                   Nome completo
                 </label>
                 <input
@@ -73,12 +76,12 @@ export default function LeadForm() {
                   value={nome}
                   onChange={(e) => setNome(e.target.value)}
                   placeholder="Seu nome"
-                  className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-500/60 transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-lg bg-white/4 border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500/50 focus:bg-white/6 transition-all duration-150 text-sm"
                 />
               </div>
 
               <div>
-                <label className="block font-mono text-xs text-gray-400 uppercase tracking-widest mb-2">
+                <label className="block font-mono text-xs text-slate-400 uppercase tracking-[0.12em] mb-2">
                   E-mail
                 </label>
                 <input
@@ -87,7 +90,7 @@ export default function LeadForm() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="seu@email.com"
-                  className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-500/60 transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-lg bg-white/4 border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500/50 focus:bg-white/6 transition-all duration-150 text-sm"
                 />
               </div>
 
@@ -105,7 +108,7 @@ export default function LeadForm() {
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full py-4 px-6 bg-indigo-600 hover:bg-indigo-500 disabled:bg-indigo-800 disabled:cursor-not-allowed text-white font-mono font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-indigo-500/25 flex items-center justify-center gap-2"
+                className="w-full py-3.5 px-6 bg-indigo-600 hover:bg-indigo-500 disabled:bg-indigo-800 disabled:cursor-not-allowed text-white font-mono font-semibold rounded-lg transition-colors duration-150 hover:shadow-lg hover:shadow-indigo-500/20 flex items-center justify-center gap-2 text-sm"
               >
                 {status === 'loading' ? (
                   <>
@@ -120,7 +123,7 @@ export default function LeadForm() {
                 )}
               </button>
 
-              <p className="text-center font-mono text-xs text-gray-600">
+              <p className="text-center font-mono text-xs text-slate-600">
                 Sem spam. Sem lista de terceiros.
               </p>
             </form>
