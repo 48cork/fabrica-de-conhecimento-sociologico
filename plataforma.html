@@ -407,11 +407,139 @@
   .header { animation: fadeUp 0.8s ease forwards; }
   .container { animation: fadeUp 1s ease 0.2s both; }
 
+  /* Questionário */
+  .quiz-section {
+    margin-top: 60px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    padding: 52px 48px 60px;
+    margin-left: -40px;
+    margin-right: -40px;
+    position: relative;
+  }
+
+  .quiz-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 900;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .quiz-subtitle {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin-bottom: 48px;
+  }
+
+  .quiz-part {
+    margin-bottom: 44px;
+  }
+
+  .quiz-part-header {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 5px;
+    color: var(--gold);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+    margin-bottom: 28px;
+    display: block;
+  }
+
+  .quiz-question {
+    margin-bottom: 26px;
+  }
+
+  .quiz-question-num {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--gold);
+    font-size: 0.88rem;
+    letter-spacing: 2px;
+    margin-right: 8px;
+    opacity: 0.8;
+  }
+
+  .quiz-question p {
+    font-family: 'Lora', serif;
+    font-size: 0.96rem;
+    color: var(--text);
+    margin-bottom: 10px;
+    text-align: left;
+    hyphens: none;
+  }
+
+  .quiz-question p::first-letter {
+    font-size: inherit;
+    font-weight: inherit;
+    float: none;
+    line-height: inherit;
+    margin: 0;
+    background: none;
+    -webkit-text-fill-color: var(--text);
+  }
+
+  .quiz-textarea {
+    width: 100%;
+    min-height: 120px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 2px solid rgba(240,192,96,0.4);
+    padding: 14px 16px;
+    font-family: 'Lora', serif;
+    font-size: 0.93rem;
+    color: var(--text);
+    line-height: 1.85;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .quiz-textarea:focus {
+    border-color: rgba(240,192,96,0.5);
+    border-left-color: var(--gold);
+    background: #1e2233;
+  }
+
+  .quiz-textarea::placeholder {
+    color: var(--muted);
+    font-style: italic;
+    opacity: 0.6;
+  }
+
+  .quiz-print-btn {
+    display: block;
+    margin: 40px auto 0;
+    background: var(--gold);
+    color: var(--bg);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 4px;
+    padding: 15px 48px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .quiz-print-btn:hover {
+    opacity: 0.85;
+  }
+
+  @media print {
+    .quiz-print-btn { display: none; }
+    .header, .container { animation: none; }
+    body::before { display: none; }
+  }
+
   @media (max-width: 600px) {
     .container { padding: 20px 24px 80px; }
     .theory-box { padding: 28px 24px; }
     .pull-quote { margin: 40px -24px; padding: 36px 24px; }
     .notif-bar { margin: 0 24px 48px; }
+    .quiz-section { margin-left: -24px; margin-right: -24px; padding: 40px 24px 48px; }
   }
 </style>
 </head>
@@ -624,6 +752,64 @@
       <span class="tag-item"><strong>Plataformização</strong> — Uberização do Trabalho</span>
       <span class="tag-item"><strong>Weber</strong> — Racionalização</span>
     </div>
+  </div>
+
+  <!-- QUESTIONÁRIO -->
+  <div class="quiz-section">
+    <h2 class="quiz-title">Questionário de Compreensão</h2>
+    <p class="quiz-subtitle">Responda com atenção ao texto. Não há resposta certa ou errada — há respostas mais ou menos fundamentadas.</p>
+
+    <!-- PARTE 1 -->
+    <div class="quiz-part">
+      <span class="quiz-part-header">Parte 1 &nbsp;—&nbsp; Compreensão do Texto</span>
+
+      <div class="quiz-question">
+        <p><span class="quiz-question-num">Q1</span>No início do conto, Miguel acorda com uma "urgência silenciosa". O que essa expressão significa? Que forças sociais produzem essa sensação?</p>
+        <textarea class="quiz-textarea" placeholder="Digite sua resposta aqui…"></textarea>
+      </div>
+
+      <div class="quiz-question">
+        <p><span class="quiz-question-num">Q2</span>O entregador que Miguel observa no caminho de casa não tem patrão visível — tem um algoritmo. O que isso revela sobre as novas formas de controle do trabalho?</p>
+        <textarea class="quiz-textarea" placeholder="Digite sua resposta aqui…"></textarea>
+      </div>
+    </div>
+
+    <!-- PARTE 2 -->
+    <div class="quiz-part">
+      <span class="quiz-part-header">Parte 2 &nbsp;—&nbsp; Os Conceitos</span>
+
+      <div class="quiz-question">
+        <p><span class="quiz-question-num">Q3</span>Marx fala em "fetichismo da mercadoria". Como o "Deus invisível" descrito no conto ilustra esse conceito?</p>
+        <textarea class="quiz-textarea" placeholder="Digite sua resposta aqui…"></textarea>
+      </div>
+
+      <div class="quiz-question">
+        <p><span class="quiz-question-num">Q4</span>Byung-Chul Han descreve a "Sociedade do Desempenho". Com suas próprias palavras, explique o que isso significa — e identifique um momento do conto em que Miguel ou sua irmã vivem essa experiência.</p>
+        <textarea class="quiz-textarea" placeholder="Digite sua resposta aqui…"></textarea>
+      </div>
+
+      <div class="quiz-question">
+        <p><span class="quiz-question-num">Q5</span>O que é "plataformização do trabalho"? Por que o entregador do conto é descrito como "formalmente autônomo, mas na prática controlado"?</p>
+        <textarea class="quiz-textarea" placeholder="Digite sua resposta aqui…"></textarea>
+      </div>
+    </div>
+
+    <!-- PARTE 3 -->
+    <div class="quiz-part">
+      <span class="quiz-part-header">Parte 3 &nbsp;—&nbsp; Reflexão Pessoal</span>
+
+      <div class="quiz-question">
+        <p><span class="quiz-question-num">Q6</span>Miguel desliga o celular por três horas e sente desconforto, inquietação, quase dependência. Você já viveu algo parecido? O que esse experimento revela sobre a relação entre as pessoas e as plataformas digitais?</p>
+        <textarea class="quiz-textarea" style="min-height:160px;" placeholder="Digite sua resposta aqui…"></textarea>
+      </div>
+
+      <div class="quiz-question">
+        <p><span class="quiz-question-num">Q7</span>No final, Miguel pergunta: "E se esse Deus só existe porque ninguém ousa questionar?" O que essa pergunta tem de sociológico? É possível questionar — e o que isso exigiria?</p>
+        <textarea class="quiz-textarea" style="min-height:160px;" placeholder="Digite sua resposta aqui…"></textarea>
+      </div>
+    </div>
+
+    <button class="quiz-print-btn" onclick="window.print()">Imprimir Respostas</button>
   </div>
 
 </div>
