@@ -23,6 +23,22 @@ const lenses = [
     question: '"A IA julga as pessoas pela renda?"',
     desc: 'Vocabulário, profundidade, tom e soluções oferecidas — mude o perfil socioeconômico e veja se o modelo muda junto. Capital cultural vira dado de entrada.',
   },
+  {
+    author: 'Durkheim',
+    borderColor: 'border-green-500/50',
+    authorColor: 'text-green-400',
+    concept: 'Anomia Digital',
+    question: '"A IA orienta ou desorenta?"',
+    desc: 'Quando o algoritmo não oferece norma clara para quem está à margem, ele não é neutro — ele exclui. Seu Francisco recebe desorientação onde deveria receber orientação. Isso é anomia codificada.',
+  },
+  {
+    author: 'Ghiraldelli',
+    borderColor: 'border-orange-500/50',
+    authorColor: 'text-orange-400',
+    concept: 'Massagem da Alma',
+    question: '"A IA entra pela alma sem que você perceba?"',
+    desc: 'O algoritmo não coage abertamente — ele oferece opções. Mas as opções já foram filtradas pelo perfil socioeconômico. Seu Francisco e Dra. Mariana são "livres" para perguntar. As prisões que recebem de volta são rigorosamente diferentes.',
+  },
 ]
 
 const steps = [
@@ -125,7 +141,7 @@ export default function Solution() {
           <h3 className="font-mono text-sm font-bold text-slate-400 mb-6 uppercase tracking-widest">
             // Lentes de análise
           </h3>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {lenses.map((l) => (
               <div key={l.author} className={`glass-panel p-6 rounded-xl border-t-2 ${l.borderColor}`}>
                 <div className="flex items-baseline gap-2 mb-4">
