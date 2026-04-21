@@ -362,6 +362,137 @@
   .header { animation: fadeUp 0.8s ease forwards; }
   .container { animation: fadeUp 1s ease 0.2s both; }
 
+  /* Questionário */
+  .quiz-section {
+    margin-top: 60px;
+    border-top: 3px solid var(--ink);
+    padding-top: 52px;
+  }
+
+  .quiz-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 900;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .quiz-subtitle {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 48px;
+  }
+
+  .quiz-part {
+    margin-bottom: 48px;
+  }
+
+  .quiz-part-header {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 5px;
+    color: var(--accent);
+    border-bottom: 1px solid var(--light-sepia);
+    padding-bottom: 10px;
+    margin-bottom: 28px;
+    display: block;
+  }
+
+  .quiz-question {
+    margin-bottom: 28px;
+  }
+
+  .quiz-question-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .quiz-question-num {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--sepia);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-right: 8px;
+  }
+
+  .quiz-question p {
+    font-family: 'Lora', serif;
+    font-size: 0.97rem;
+    color: var(--ink);
+    margin-bottom: 10px;
+    text-align: left;
+    hyphens: none;
+  }
+
+  .quiz-question p::first-letter {
+    font-size: inherit;
+    font-weight: inherit;
+    float: none;
+    line-height: inherit;
+    margin: 0;
+    color: inherit;
+  }
+
+  .quiz-textarea {
+    width: 100%;
+    min-height: 120px;
+    background: var(--paper);
+    border: 1px solid var(--light-sepia);
+    border-left: 3px solid var(--accent);
+    padding: 14px 16px;
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.8;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .quiz-textarea:focus {
+    border-color: var(--sepia);
+    border-left-color: var(--sepia);
+    background: #fff;
+  }
+
+  .quiz-textarea::placeholder {
+    color: var(--muted);
+    font-style: italic;
+    opacity: 0.6;
+  }
+
+  .quiz-print-btn {
+    display: block;
+    margin: 40px auto 0;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 4px;
+    padding: 16px 48px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .quiz-print-btn:hover {
+    background: var(--sepia);
+    color: var(--paper);
+  }
+
+  @media print {
+    .quiz-print-btn { display: none; }
+    .header { animation: none; }
+    .container { animation: none; }
+    body::before { display: none; }
+  }
+
   @media (max-width: 600px) {
     .container { padding: 40px 24px 80px; }
     .theory-box { padding: 28px 28px; }
@@ -611,6 +742,64 @@
       <span class="tag-item"><strong>Durkheim</strong> — Anomia</span>
       <span class="tag-item"><strong>Durkheim</strong> — Solidariedade Orgânica</span>
     </div>
+  </div>
+
+  <!-- QUESTIONÁRIO -->
+  <div class="quiz-section">
+    <h2 class="quiz-title">Questionário de Compreensão</h2>
+    <p class="quiz-subtitle">Responda com atenção ao texto. Não há resposta certa ou errada — há respostas mais ou menos fundamentadas.</p>
+
+    <!-- PARTE 1 -->
+    <div class="quiz-part">
+      <span class="quiz-part-header">Parte 1 &nbsp;—&nbsp; Compreensão do Texto</span>
+
+      <div class="quiz-question">
+        <p><span class="quiz-question-num">Q1</span>No início do conto, Lucas acredita que o mundo "sempre foi assim". O que o professor faz para provocar uma dúvida nessa certeza?</p>
+        <textarea class="quiz-textarea" placeholder="Digite sua resposta aqui…"></textarea>
+      </div>
+
+      <div class="quiz-question">
+        <p><span class="quiz-question-num">Q2</span>Por que Mariana foi reprovada no estágio? O que esse episódio revela sobre como o trabalho é avaliado na sociedade moderna?</p>
+        <textarea class="quiz-textarea" placeholder="Digite sua resposta aqui…"></textarea>
+      </div>
+    </div>
+
+    <!-- PARTE 2 -->
+    <div class="quiz-part">
+      <span class="quiz-part-header">Parte 2 &nbsp;—&nbsp; Os Três Autores</span>
+
+      <div class="quiz-question">
+        <p><span class="quiz-question-num">Q3</span>O que Durkheim chama de anomia? Identifique um momento do conto em que Lucas ou Mariana vivem essa experiência.</p>
+        <textarea class="quiz-textarea" placeholder="Digite sua resposta aqui…"></textarea>
+      </div>
+
+      <div class="quiz-question">
+        <p><span class="quiz-question-num">Q4</span>Para Marx, o que significa alienação? Como a situação do pai de Lucas ilustra esse conceito?</p>
+        <textarea class="quiz-textarea" placeholder="Digite sua resposta aqui…"></textarea>
+      </div>
+
+      <div class="quiz-question">
+        <p><span class="quiz-question-num">Q5</span>Weber usa a expressão "gaiola de ferro". Com suas próprias palavras, explique o que ela significa — e por que a empresa de Mariana pode ser um exemplo dela.</p>
+        <textarea class="quiz-textarea" placeholder="Digite sua resposta aqui…"></textarea>
+      </div>
+    </div>
+
+    <!-- PARTE 3 -->
+    <div class="quiz-part">
+      <span class="quiz-part-header">Parte 3 &nbsp;—&nbsp; Reflexão Pessoal</span>
+
+      <div class="quiz-question">
+        <p><span class="quiz-question-num">Q6</span>No final do conto, Lucas pergunta: "Se a sociedade foi construída assim… será que ela precisa continuar assim?" O que essa pergunta tem de sociológico — e o que ela tem de pessoal para você?</p>
+        <textarea class="quiz-textarea" style="min-height: 160px;" placeholder="Digite sua resposta aqui…"></textarea>
+      </div>
+
+      <div class="quiz-question">
+        <p><span class="quiz-question-num">Q7</span>Escolha um dos três autores (Durkheim, Marx ou Weber) e explique como o conceito dele aparece em alguma situação da sua própria vida cotidiana.</p>
+        <textarea class="quiz-textarea" style="min-height: 160px;" placeholder="Digite sua resposta aqui…"></textarea>
+      </div>
+    </div>
+
+    <button class="quiz-print-btn" onclick="window.print()">Imprimir Respostas</button>
   </div>
 
 </div>
