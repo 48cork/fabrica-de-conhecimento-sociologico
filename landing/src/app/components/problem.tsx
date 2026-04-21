@@ -52,7 +52,7 @@ export default function Problem() {
             O que ninguém te contou na grade de TI
           </span>
           <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold text-white max-w-2xl leading-tight tracking-tight">
-            5 fatos sobre algoritmos e desigualdade que você precisa entender antes de entrar no mercado
+            5 questões que a Sociologia coloca sobre algoritmos e desigualdade
           </h2>
         </div>
 
