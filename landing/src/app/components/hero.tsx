@@ -17,11 +17,11 @@ export default function Hero() {
 
         {/* Headline principal */}
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-8">
-          Você vai construir algoritmos.{' '}
+          Você vai usar sistemas de IA.{' '}
           <span className="text-indigo-400">
             Eles já têm classe social
           </span>{' '}
-          antes de você escrever uma palavra no ChatGPT.
+          antes de você fazer a primeira pergunta.
         </h1>
 
         {/* Subheadline */}

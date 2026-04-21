@@ -35,6 +35,15 @@ export default function ClassTension() {
           </p>
         </div>
 
+        <div className="mt-16 pt-12 border-t border-white/6 text-center">
+          <p className="text-xl sm:text-2xl font-bold text-white leading-snug max-w-2xl mx-auto">
+            É para isso que existe este experimento. Não para te ensinar a programar —{' '}
+            <span className="text-indigo-400">
+              mas para te ensinar a ver o que os sistemas fazem antes de você reproduzi-los sem questionar.
+            </span>
+          </p>
+        </div>
+
       </div>
     </section>
   )
