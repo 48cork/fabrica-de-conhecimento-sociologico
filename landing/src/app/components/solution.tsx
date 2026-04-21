@@ -123,7 +123,7 @@ export default function Solution() {
         {/* Passos */}
         <div className="mb-20">
           <h3 className="font-mono text-sm font-bold text-slate-400 mb-6 uppercase tracking-widest">
-            // Como executar o experimento
+            Como executar o experimento
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {steps.map((s) => (
@@ -139,7 +139,7 @@ export default function Solution() {
         {/* Lentes teóricas */}
         <div>
           <h3 className="font-mono text-sm font-bold text-slate-400 mb-6 uppercase tracking-widest">
-            // Lentes de análise
+            Lentes de análise
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {lenses.map((l) => (

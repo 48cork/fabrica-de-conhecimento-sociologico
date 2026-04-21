@@ -33,7 +33,7 @@ export default function Hero() {
 
         <p className="text-base text-slate-500 max-w-2xl leading-relaxed mb-12">
           Não é uma aula de Sociologia distante da sua área. É uma aula sobre
-          os sistemas que você vai construir.
+          os sistemas que já organizam a sua vida.
         </p>
 
         {/* CTAs */}

@@ -16,7 +16,7 @@ export default function Footer() {
               Sistema Ativo
             </span>
           </div>
-          <p className="font-mono text-xs text-slate-700 mt-1">Motor AIOX v2.0</p>
+          <p className="font-mono text-xs text-slate-700 mt-1">Sociologia 2026.1 · UFCG · Cajazeiras-PB</p>
         </div>
 
         {/* Disciplinas */}

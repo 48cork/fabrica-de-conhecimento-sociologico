@@ -4,8 +4,8 @@ const issues = [
     tag: 'Viés Algorítmico',
     tagColor: 'text-red-400',
     dotColor: 'bg-red-400',
-    title: 'O dataset reflete o mundo. Se o mundo é desigual, o modelo aprende a desigualdade.',
-    desc: 'Modelos de linguagem são treinados em texto humano. Texto humano carrega estrutura de classe, raça e gênero. Isso não é bug — é design.',
+    title: 'A IA aprende com texto humano. Se esse texto carrega desigualdade de classe, raça e gênero, o modelo reproduz essa desigualdade.',
+    desc: 'Não é um erro técnico. É o reflexo do mundo que alimentou o treinamento.',
   },
   {
     id: '02',
@@ -20,8 +20,8 @@ const issues = [
     tag: 'Ponto Cego Técnico',
     tagColor: 'text-yellow-400',
     dotColor: 'bg-yellow-400',
-    title: 'Ética em IA não aparece em Algoritmos nem em Estruturas de Dados.',
-    desc: 'A grade curricular de TI entrega a ferramenta sem entregar a pergunta: "para quem esse sistema vai servir, e quem ele vai prejudicar?"',
+    title: 'A formação universitária entrega a ferramenta sem entregar a pergunta.',
+    desc: '"Para quem esse sistema vai servir, e quem ele vai prejudicar?"',
   },
   {
     id: '04',
@@ -36,8 +36,8 @@ const issues = [
     tag: 'Responsabilidade',
     tagColor: 'text-violet-400',
     dotColor: 'bg-violet-400',
-    title: 'Quando você lança um sistema sem entender isso, você não é neutro. Você é cúmplice.',
-    desc: 'Neutralidade técnica é uma posição política. Desenvolvedores que ignoram impacto social não estão fora do problema — estão dentro dele, construindo a infraestrutura.',
+    title: 'Quando você usa um sistema sem entender isso, você não é neutro.',
+    desc: 'Neutralidade diante da desigualdade é também uma posição política.',
   },
 ]
 
@@ -49,7 +49,7 @@ export default function Problem() {
 
         <div className="mb-14">
           <span className="font-mono text-xs text-red-400 uppercase tracking-[0.15em]">
-            O que ninguém te contou na grade de TI
+            5 questões que a Sociologia coloca sobre algoritmos e desigualdade
           </span>
           <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold text-white max-w-2xl leading-tight tracking-tight">
             5 questões que a Sociologia coloca sobre algoritmos e desigualdade
