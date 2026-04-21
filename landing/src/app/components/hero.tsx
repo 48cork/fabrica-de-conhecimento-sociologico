@@ -21,7 +21,7 @@ export default function Hero() {
           <span className="text-indigo-400">
             Eles já têm classe social
           </span>{' '}
-          antes de você escrever uma linha de código.
+          antes de você escrever uma palavra no ChatGPT.
         </h1>
 
         {/* Subheadline */}
