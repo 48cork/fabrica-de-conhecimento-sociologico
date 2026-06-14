@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Questões para Debate — Vídeos em Sala</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --cream: #e8dcc8;
+    --ink: #1a1208;
+    --sepia: #c9a84c;
+    --rust: #c0392b;
+    --muted: #a09070;
+    --accent: #c9a84c;
+    --light-sepia: #2a1f0e;
+    --paper: #1a1208;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--paper);
+    color: var(--cream);
+    font-family: 'Lora', serif;
+    line-height: 1.9;
+    font-size: 18px;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.5;
+  }
+
+  .header {
+    background-color: var(--ink);
+    color: var(--cream);
+    padding: 80px 40px 60px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(255,255,255,0.015) 2px, rgba(255,255,255,0.015) 4px
+    );
+  }
+
+  .header-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 6px;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+  }
+
+  .header h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .divider-header {
+    width: 80px;
+    height: 2px;
+    background: var(--accent);
+    margin: 24px auto;
+  }
+
+  .header-sub {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: rgba(245,240,232,0.6);
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 60px 40px 100px;
+  }
+
+  /* Video blocks */
+  .video-block {
+    margin-bottom: 72px;
+    border-top: 2px solid rgba(201,168,76,0.3);
+    padding-top: 48px;
+  }
+
+  .video-block:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .video-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 6px;
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .video-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+
+  .video-theme {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 32px;
+    border-left: 3px solid var(--accent);
+    padding-left: 14px;
+  }
+
+  /* Questions */
+  .question-item {
+    margin-bottom: 28px;
+    background: var(--light-sepia);
+    padding: 28px 32px;
+    border-left: 3px solid var(--accent);
+    position: relative;
+  }
+
+  .question-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .question-text {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    color: var(--cream);
+    line-height: 1.75;
+    text-align: left;
+    hyphens: none;
+    margin: 0;
+  }
+
+  /* Intro box */
+  .intro-box {
+    background: var(--light-sepia);
+    border-left: 4px solid var(--accent);
+    padding: 36px 44px;
+    margin-bottom: 60px;
+    position: relative;
+  }
+
+  .intro-box::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 100px;
+    color: var(--accent);
+    opacity: 0.15;
+    position: absolute;
+    top: -10px;
+    left: 14px;
+    line-height: 1;
+  }
+
+  .intro-box p {
+    font-style: italic;
+    color: var(--cream);
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--ink);
+    color: rgba(245,240,232,0.4);
+    text-align: center;
+    padding: 32px;
+    font-size: 0.8rem;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 3px;
+  }
+
+  /* Print */
+  @media print {
+    body::before { display: none; }
+    .header { animation: none; }
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 40px 20px 80px; }
+    .question-item { padding: 22px 20px; }
+    .intro-box { padding: 28px 24px; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .header   { animation: fadeUp 0.7s ease forwards; }
+  .container { animation: fadeUp 0.9s ease 0.15s both; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <span class="header-label">Fábrica de Conhecimento Sociológico — Debate em Sala</span>
+  <h1>Questões para <em>Debate</em><br>com Vídeos</h1>
+  <div class="divider-header"></div>
+  <p class="header-sub">Introdução à Sociologia &nbsp;·&nbsp; Trabalho, Tecnologia &amp; Poder</p>
+</header>
+
+<div class="container">
+
+  <div class="intro-box">
+    <p>Os vídeos a seguir são pontos de partida. As perguntas não têm resposta certa — têm respostas mais ou menos fundamentadas. O objetivo é pensar junto, discordar com argumento e enxergar o social no cotidiano.</p>
+  </div>
+
+  <!-- VÍDEO 1 -->
+  <div class="video-block">
+    <span class="video-number">VÍDEO 01</span>
+    <h2 class="video-title">Entregador é Empregado? — #felipedurante</h2>
+    <p class="video-theme">Tema: Trabalho, direitos trabalhistas e economia de plataforma</p>
+
+    <div class="question-item">
+      <span class="question-num">QUESTÃO 01</span>
+      <p class="question-text">Os aplicativos como iFood e Uber classificam os entregadores como "parceiros autônomos", e não como empregados. Na sua opinião, essa distinção é justa? Quem se beneficia dessa classificação?</p>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">QUESTÃO 02</span>
+      <p class="question-text">O sociólogo Richard Sennett fala sobre a "corrosão do caráter" causada pelo trabalho precário e instável. Como a situação dos entregadores de aplicativo se encaixa nessa ideia?</p>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">QUESTÃO 03</span>
+      <p class="question-text">Se os entregadores fossem reconhecidos como empregados com carteira assinada, quais seriam as consequências para eles, para os aplicativos e para a sociedade? Haveria perdas e ganhos dos dois lados?</p>
+    </div>
+  </div>
+
+  <!-- VÍDEO 2 -->
+  <div class="video-block">
+    <span class="video-number">VÍDEO 02</span>
+    <h2 class="video-title">Mayk Leão: O Cara que Viu ET — Galãs Feios</h2>
+    <p class="video-theme">Tema: Verdade, credibilidade e construção social da realidade</p>
+
+    <div class="question-item">
+      <span class="question-num">QUESTÃO 04</span>
+      <p class="question-text">Por que algumas pessoas constroem histórias falsas ou exageradas para ganhar atenção nas redes sociais? O que isso revela sobre a busca por reconhecimento na sociedade contemporânea?</p>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">QUESTÃO 05</span>
+      <p class="question-text">Como a sociedade decide quem merece ser acreditado? Quais fatores — classe, gênero, escolaridade, aparência — influenciam a credibilidade de uma pessoa?</p>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">QUESTÃO 06</span>
+      <p class="question-text">Erving Goffman fala sobre "gestão de impressões" — a ideia de que as pessoas "performam" papéis sociais para controlar como são vistas. Como esse conceito se aplica ao comportamento de quem fabrica ou exagera histórias nas redes?</p>
+    </div>
+  </div>
+
+  <!-- VÍDEO 3 -->
+  <div class="video-block">
+    <span class="video-number">VÍDEO 03</span>
+    <h2 class="video-title">O Mundo Não Está Preparado para Estes Robôs Chineses</h2>
+    <p class="video-theme">Tema: Tecnologia, trabalho e desigualdade global</p>
+
+    <div class="question-item">
+      <span class="question-num">QUESTÃO 07</span>
+      <p class="question-text">Se robôs substituírem trabalhadores em fábricas e serviços, quem vai se beneficiar dessa mudança? E quem vai ser prejudicado? A tecnologia é neutra ou tem interesses por trás?</p>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">QUESTÃO 08</span>
+      <p class="question-text">A corrida tecnológica entre países como China e Estados Unidos tem consequências sociais profundas. Como o avanço da robótica pode aprofundar ou reduzir as desigualdades entre nações e dentro de cada nação?</p>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">QUESTÃO 09</span>
+      <p class="question-text">Há algo que os seres humanos fazem que você acredita que um robô nunca conseguirá substituir? Por quê? O que isso nos diz sobre o que é essencialmente humano?</p>
+    </div>
+  </div>
+
+  <!-- VÍDEO 4 -->
+  <div class="video-block">
+    <span class="video-number">VÍDEO 04</span>
+    <h2 class="video-title">Mendonça diz que big techs são censuradas — Dino rebate</h2>
+    <p class="video-theme">Tema: Poder, liberdade de expressão e regulação do Estado</p>
+
+    <div class="question-item">
+      <span class="question-num">QUESTÃO 10</span>
+      <p class="question-text">Quando o Estado impõe limites às redes sociais, isso é censura ou proteção da sociedade? Onde está a linha entre os dois? Essa linha é a mesma para todos os grupos sociais?</p>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">QUESTÃO 11</span>
+      <p class="question-text">As grandes empresas de tecnologia (Meta, X, Google) têm mais poder do que muitos governos. Isso representa um problema para a democracia? Quem controla quem nessa relação?</p>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">QUESTÃO 12</span>
+      <p class="question-text">Quem deve decidir o que pode ou não pode ser publicado nas redes sociais — o governo, as empresas privadas ou os próprios usuários? É possível um modelo que funcione para todos?</p>
+    </div>
+  </div>
+
+  <!-- VÍDEO 5 -->
+  <div class="video-block">
+    <span class="video-number">VÍDEO 05</span>
+    <h2 class="video-title">Video by couriernewsroom — Instagram</h2>
+    <p class="video-theme">Tema: Mídia, informação e jornalismo digital</p>
+
+    <div class="question-item">
+      <span class="question-num">QUESTÃO 13</span>
+      <p class="question-text">Como você avalia a credibilidade de uma notícia que vem de uma conta no Instagram em comparação com um jornal tradicional? O formato e o canal mudam a forma como recebemos a informação?</p>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">QUESTÃO 14</span>
+      <p class="question-text">As redes sociais democratizaram a informação ou criaram mais desinformação? É possível que tenham feito as duas coisas ao mesmo tempo? Dê exemplos concretos.</p>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">QUESTÃO 15</span>
+      <p class="question-text">Quem tem responsabilidade quando uma notícia falsa se espalha — o criador do conteúdo, a plataforma ou quem compartilha? A responsabilidade muda dependendo de quem é afetado?</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Fábrica de Conhecimento Sociológico &nbsp;·&nbsp; Questões para Debate &nbsp;·&nbsp; Introdução à Sociologia
+</footer>
+
+</body>
+</html>
